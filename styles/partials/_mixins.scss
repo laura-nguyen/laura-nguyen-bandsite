@@ -1,0 +1,16 @@
+@use 'global' as *;
+@use 'variables' as *; 
+@use 'typography' as *;
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+      @content;
+    }
+  }
+  

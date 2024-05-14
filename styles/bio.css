@@ -1,1 +1,119 @@
-/*# sourceMappingURL=bio.css.map */
+@font-face {
+  font-family: "Avenir Next LT Pro";
+  src: url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir Next LT Pro";
+  src: url("../assets/fonts/AvenirNextLTPro-Demi.otf") format("opentype"), url("../assets/fonts/AvenirNextLTProDemi.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Avenir Next LT Pro";
+  src: url("../assets/fonts/AvenirNextLTPro-Regular.otf") format("opentype"), url("../assets/fonts/AvenirNextLTPro.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Avenir Next LT Pro", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  padding: 1.5rem, 1rem, 1rem, 1rem;
+}
+
+h3 {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: 600;
+}
+
+h4, p {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+
+button {
+  font-size: 0.625rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+}
+
+.wrapper--header {
+  background-color: #323232;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__logo {
+  height: 1.25rem;
+  width: 7.5rem;
+  padding-top: 1rem;
+}
+
+.wrapper--hero {
+  background-image: url("../assets/images/hero-bio.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__nav ul li {
+  list-style: none;
+}
+
+.wrapper--footer {
+  background-color: #323232;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper__gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.hero__title {
+  padding: 1.5rem 1rem 1rem 1rem;
+  text-align: left;
+}
+
+.gallery__img-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.gallery__img {
+  padding: 0.5rem 1rem;
+  width: 100%;
+  height: auto;
+}/*# sourceMappingURL=bio.css.map */

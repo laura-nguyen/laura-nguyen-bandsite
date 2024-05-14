@@ -1,0 +1,42 @@
+@use 'partials/global' as *;
+@use 'partials/mixins' as *;
+@use 'partials/variables' as *;
+@use 'partials/typography' as *;
+
+// Reset 
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.wrapper__gallery {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+.hero__title {
+    padding: 1.5rem 1rem 1rem 1rem;
+    text-align: left;
+}
+
+.about__img {
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+}
+
+.gallery__img-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.gallery__img {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    height: auto;
+}
