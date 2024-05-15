@@ -7,80 +7,148 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Avenir Next LT Pro', sans-serif;
   }
 
-body {
-    font-family: 'Avenir Next LT Pro', sans-serif;
-}
-  
-h1 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 700;
-    color: $white;
-}
-
-h2 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 700;
-    padding: 1.5rem, 1rem, 1rem, 1rem;
-
-}
-
-h3 {
-    font-size: .875rem;
-    line-height: 1.375rem;
-    font-weight: 600;
-
-}
-
-h4, p {
-    font-size: .8125rem;
-    line-height: 1.125rem;
-    font-weight: 400;
-}
-
-button {
-    font-size: .625rem;
-    line-height: 1.25rem;
-    font-weight: 700;
-}
 
 .wrapper--header {
     background-color: $bandsite-black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-
-
+    width: 100%;
 }
+
 
 .header__nav {
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
+    width: 100%;
 }
 
-.header__nav ul li {
-    list-style: none;
+.header__nav-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    position: relative;
+    width: 100%;
+
+
 }
+
+.header__item {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    list-style-type: none;
+}
+
+
+.header__link{
+    text-decoration: none;
+    color: $white;
+    
+}
+
+.header__link--active {
+    border-bottom: $white solid 0.25rem;
+    font-weight: 600;
+}
+
+// .header__link--inactive {
+//     color: $mercury;
+//     font-weight: 600;
+// }
+
+// .header__link--inactive:hover {
+//     color: $mercury;
+//     border-bottom: $white solid 0.25rem;
+// } 
 
 
 .header__logo {
     padding-top: 1rem;
+    max-width: 7.5rem;
 }
 
 .wrapper--hero {
-    background-image: url("../assets/images/hero-bio.jpg");
+    background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
 
 }
+
+.hero__title {
+    font-size: 1.5rem;
+    padding: 5rem 1rem;
+    text-align: left;
+    color: $white;
+    font-weight: 600;
+}
+
+
 
 
 .wrapper--footer {
     background-color: $bandsite-black;
+    color: $white;
+    padding: 1rem; 
+    font-size: .8125rem; // need to double check this
 }
 
+
+.footer__social {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    width: 38%;
+
+}
+
+.footer__social-icon {
+    height: 1.5rem;
+}
+
+.footer__social-icon:hover {
+    fill: $mercury;
+}
+
+.footer__title {
+    font-weight: 600;
+    padding-top: 1rem; 
+
+}
+
+.footer__contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__agent {
+    padding: 1rem 0 1rem 0;
+}
+
+.contact__name {
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+
+.contact__info {
+    padding-bottom: 1rem; 
+    line-height: 1.125rem; //want to fix this 
+}
+
+.contact__email {
+    text-decoration: none;
+    color: $white;
+    padding-top: 1rem;
+}
+
+.footer__logo {
+    padding: 1rem 0;
+}
+
+.footer__copyright {
+    font-size: .6563rem;
+    padding-top: 1rem;
+}
