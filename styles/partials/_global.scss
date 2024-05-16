@@ -10,23 +10,42 @@
     font-family: 'Avenir Next LT Pro', sans-serif;
   }
 
+img {
+    width: 100%;
+    display: block;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
 
 .wrapper--header {
     background-color: $bandsite-black;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 100%;
+
+
+    @include tablet {
+        flex-direction: row;
+
+
+    }
+
+
 }
 
-
+// fix nav - uneven 
 .header__nav {
     width: 100%;
 }
 
 .header__nav-container {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: space-around;
     position: relative;
     width: 100%;
@@ -38,7 +57,6 @@
     width: 100%;
     text-align: center;
     padding: 1rem 0;
-    list-style-type: none;
 }
 
 
@@ -65,8 +83,11 @@
 
 
 .header__logo {
-    padding-top: 1rem;
+    padding-top: 1.5rem;
     max-width: 7.5rem;
+    @include tablet {
+        padding-top: 0;
+    }
 }
 
 .wrapper--hero {
@@ -84,16 +105,29 @@
     text-align: left;
     color: $white;
     font-weight: 600;
+
+    @include tablet {
+        font-size: 3.75rem;
+        padding: 13rem 2.25rem; // will adjust top/bottom
+    }
+
+    @include desktop {
+        
+    }
 }
 
 
 
-
+// use order 
 .wrapper--footer {
     background-color: $bandsite-black;
     color: $white;
     padding: 1rem; 
     font-size: .8125rem; // need to double check this
+
+    @include tablet {
+        padding: 2.25rem;
+    }
 }
 
 
@@ -107,8 +141,10 @@
 
 .footer__social-icon {
     height: 1.5rem;
+    width: auto;
 }
 
+// not working 
 .footer__social-icon:hover {
     fill: $mercury;
 }
@@ -117,11 +153,21 @@
     font-weight: 600;
     padding-top: 1rem; 
 
+    @include tablet {
+        font-size: 2.25rem;
+        font-weight: 700; // looks bolder - need to fix 
+    }
+
 }
 
 .footer__contact {
     display: flex;
     flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 .contact__agent {
@@ -144,11 +190,20 @@
     padding-top: 1rem;
 }
 
-.footer__logo {
-    padding: 1rem 0;
+.footer__logo { 
+    padding: 24px 0 1rem 0;
+    max-width: 7.5rem;
+    @include tablet {
+        display: hidden;
+    }
 }
+
 
 .footer__copyright {
     font-size: .6563rem;
-    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+
+    @include tablet {
+        font-size: .875rem;
+    }
 }
