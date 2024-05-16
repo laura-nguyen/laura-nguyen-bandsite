@@ -17,6 +17,11 @@ img {
 
 ul, li {
     list-style-type: none;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 
@@ -31,8 +36,15 @@ ul, li {
 
     @include tablet {
         flex-direction: row;
+        padding: 0 2.25rem;
 
 
+    }
+
+    @include desktop {
+        padding: 0 8rem;
+        
+    
     }
 
 
@@ -43,12 +55,19 @@ ul, li {
     width: 100%;
 }
 
-.header__nav-container {
+.header__nav-list {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    position: relative;
+    justify-content: space-between;
     width: 100%;
+    
+
+    @include tablet {
+        width: 20rem;
+        padding: 0 5rem;
+    }
+
+
 
 
 }
@@ -57,36 +76,48 @@ ul, li {
     width: 100%;
     text-align: center;
     padding: 1rem 0;
+
+    @include tablet {
+        width: auto;
+        padding: 1.5rem 0;
+    }
+
+    @include desktop {
+        padding: 2.5rem 0;
+    }
 }
 
 
 .header__link{
     text-decoration: none;
     color: $white;
+    font-weight: 600;
     
 }
 
-.header__link--active {
+.header__link--inactive{
+    color: $mercury;
+    font-weight: 400;
+    
+}
+
+.header__item--active {
     border-bottom: $white solid 0.25rem;
     font-weight: 600;
 }
 
-// .header__link--inactive {
-//     color: $mercury;
-//     font-weight: 600;
-// }
+.header__item--inactive {
+    border-bottom: transparent solid 0.25rem;
+}
 
-// .header__link--inactive:hover {
-//     color: $mercury;
-//     border-bottom: $white solid 0.25rem;
-// } 
-
-
+// logo should be reusable - same throughout format 
 .header__logo {
     padding-top: 1.5rem;
-    max-width: 7.5rem;
+    width: 7.5rem;
     @include tablet {
         padding-top: 0;
+        height: 1.25rem;
+        width: auto;
     }
 }
 
@@ -97,6 +128,15 @@ ul, li {
     background-position: center;
     width: 100%;
 
+    
+
+}
+
+.hero {
+    @include desktop { 
+        max-width: 80rem;
+        margin: 0 auto;
+    }
 }
 
 .hero__title {
@@ -112,21 +152,56 @@ ul, li {
     }
 
     @include desktop {
+        font-size: 3.75rem;
+        padding: 15rem 8rem;
         
     }
 }
 
-
-
-// use order 
 .wrapper--footer {
     background-color: $bandsite-black;
+    
+}
+
+.footer__content {
     color: $white;
     padding: 1rem; 
-    font-size: .8125rem; // need to double check this
+    font-size: .8125rem; 
+    display: flex;
+    flex-direction: column;
 
     @include tablet {
         padding: 2.25rem;
+        font-size: .875rem;
+
+    }
+
+    @include desktop {
+        padding: 2.25rem 8rem;
+        max-width: 80rem;
+        margin: 0 auto;
+
+    }
+}
+
+
+.footer__top {
+    @include tablet {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: baseline;
+        justify-content: space-between;
+
+        
+    }
+}
+
+.footer__title-social {
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        gap: 3rem;
+        align-items: baseline;
     }
 }
 
@@ -135,7 +210,11 @@ ul, li {
     padding: 1rem 0;
     display: flex;
     justify-content: space-between;
-    width: 38%;
+    width: 7.5rem;
+
+    @include tablet {
+        padding-bottom: 0;
+    }
 
 }
 
@@ -149,13 +228,16 @@ ul, li {
     fill: $mercury;
 }
 
+
+
 .footer__title {
     font-weight: 600;
     padding-top: 1rem; 
+    font-size: 1.5rem;
 
     @include tablet {
         font-size: 2.25rem;
-        font-weight: 700; // looks bolder - need to fix 
+        font-weight: 600; 
     }
 
 }
@@ -164,9 +246,13 @@ ul, li {
     display: flex;
     flex-direction: column;
 
+    justify-content: flex-start;
+
+
     @include tablet {
         flex-direction: row;
-        justify-content: space-between;
+        gap: 3rem;
+
     }
 }
 
@@ -190,11 +276,29 @@ ul, li {
     padding-top: 1rem;
 }
 
-.footer__logo { 
+.footer__logo--mobile {
+    @include tablet {
+        display: none;
+
+    }
+
+}
+.footer__logo--tablet-desktop {
+    display: none;
+
+    @include tablet {
+        display: contents;
+
+}
+}
+
+
+//image size can be similar to header logo 
+.footer__logo-img { 
     padding: 24px 0 1rem 0;
     max-width: 7.5rem;
     @include tablet {
-        display: hidden;
+        padding: 0;
     }
 }
 
@@ -203,7 +307,9 @@ ul, li {
     font-size: .6563rem;
     padding-bottom: 0.5rem;
 
+
     @include tablet {
         font-size: .875rem;
+        padding: 1rem 0;
     }
 }
