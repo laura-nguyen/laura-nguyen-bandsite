@@ -2,17 +2,17 @@
 @use 'variables' as *; 
 @use 'mixins' as *;
 
-
+// reset 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Avenir Next LT Pro', sans-serif;
+    
   }
 
 img {
     width: 100%;
-    display: block;
 }
 
 ul, li {
@@ -22,14 +22,18 @@ ul, li {
 
 a {
     text-decoration: none;
+    display: block;
 }
 
-
+// header & nav
 .wrapper--header {
     background-color: $bandsite-black;
+}
+
+.header__content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: baseline;
     align-items: center;
     width: 100%;
 
@@ -37,20 +41,19 @@ a {
     @include tablet {
         flex-direction: row;
         padding: 0 2.25rem;
-
-
     }
 
     @include desktop {
         padding: 0 8rem;
-        
+        max-width: 80rem;
+        margin: 0 auto;
     
     }
 
-
 }
 
-// fix nav - uneven 
+
+
 .header__nav {
     width: 100%;
 }
@@ -75,60 +78,70 @@ a {
 .header__item {
     width: 100%;
     text-align: center;
-    padding: 1rem 0;
-
+    
+  
     @include tablet {
         width: auto;
+    }
+
+    @include desktop {
+    
+    }
+}
+
+// need to add padding to the a tag to make it clickable 
+.header__link{
+    color: $white;
+    font-size: .875rem;
+    font-weight: 600;
+    display: block;
+    padding: 0.5rem 0;
+
+    @include tablet {
         padding: 1.5rem 0;
     }
 
     @include desktop {
-        padding: 2.5rem 0;
+        padding: 2rem 0;
     }
-}
-
-
-.header__link{
-    text-decoration: none;
-    color: $white;
-    font-weight: 600;
     
 }
 
+// need to fix this 
 .header__link--inactive{
     color: $mercury;
     font-weight: 400;
+    display: block;
     
 }
 
 .header__item--active {
-    border-bottom: $white solid 0.25rem;
-    font-weight: 600;
+    border-bottom: $white solid .25rem;
+    font-weight: 400;
+    display: block;
 }
 
 .header__item--inactive {
     border-bottom: transparent solid 0.25rem;
+    display: block;
 }
 
 // logo should be reusable - same throughout format 
+// for mobile. can add margin instead of padding - cam get rid of this class 
 .header__logo {
-    padding-top: 1.5rem;
+    padding-top: 1rem;
     width: 7.5rem;
     @include tablet {
         padding-top: 0;
-        height: 1.25rem;
-        width: auto;
     }
 }
 
+// hero 
 .wrapper--hero {
     background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
 
-    
 
 }
 
@@ -141,22 +154,25 @@ a {
 
 .hero__title {
     font-size: 1.5rem;
-    padding: 5rem 1rem;
+    padding: 5.1875rem 1rem;
     text-align: left;
     color: $white;
     font-weight: 600;
 
     @include tablet {
         font-size: 3.75rem;
-        padding: 13rem 2.25rem; // will adjust top/bottom
+        padding: 12rem 2.25rem; // will adjust top/bottom
     }
 
     @include desktop {
         font-size: 3.75rem;
-        padding: 15rem 8rem;
+        padding: 17rem 8rem;
         
     }
 }
+
+
+// footer
 
 .wrapper--footer {
     background-color: $bandsite-black;
@@ -191,6 +207,7 @@ a {
         flex-wrap: nowrap;
         align-items: baseline;
         justify-content: space-between;
+        padding-bottom: 2rem;
 
         
     }
@@ -200,7 +217,7 @@ a {
     @include tablet {
         display: flex;
         justify-content: space-between;
-        gap: 3rem;
+        gap: 2.125rem;
         align-items: baseline;
     }
 }
@@ -221,11 +238,12 @@ a {
 .footer__social-icon {
     height: 1.5rem;
     width: auto;
+    transition: fill 0.3s, opacity 0.3s;
 }
 
-// not working 
+
 .footer__social-icon:hover {
-    fill: $mercury;
+    opacity: 0.3;
 }
 
 
@@ -256,8 +274,10 @@ a {
     }
 }
 
+
+// container for each agent -- should rename
 .contact__agent {
-    padding: 1rem 0 1rem 0;
+    padding: 0.5rem 0;
 }
 
 .contact__name {
@@ -266,17 +286,27 @@ a {
 }
 
 .contact__info {
-    padding-bottom: 1rem; 
-    line-height: 1.125rem; //want to fix this 
+    padding-bottom: 0.5rem; 
+    line-height: 1.25rem; 
+
+    @include tablet {
+        padding: 1rem 0;
+    }
 }
 
 .contact__email {
-    text-decoration: none;
     color: $white;
-    padding-top: 1rem;
+    padding: 0.5rem 0;
+
+    @include tablet {
+        padding-bottom: 1.5rem;
+    }
 }
 
+
+
 .footer__logo--mobile {
+    padding-top: 0.5rem;
     @include tablet {
         display: none;
 
@@ -288,14 +318,13 @@ a {
 
     @include tablet {
         display: contents;
-
 }
 }
 
 
 //image size can be similar to header logo 
 .footer__logo-img { 
-    padding: 24px 0 1rem 0;
+    padding: 1.5rem 0 1rem 0;
     max-width: 7.5rem;
     @include tablet {
         padding: 0;
@@ -304,11 +333,16 @@ a {
 
 
 .footer__copyright {
-    font-size: .6563rem;
-    padding-bottom: 0.5rem;
+    font-size: .75rem;
+    padding-bottom: 1rem;
 
 
     @include tablet {
+        font-size: .875rem;
+        padding: 1.5rem 0;
+    }
+
+    @include desktop {
         font-size: .875rem;
         padding: 1rem 0;
     }
