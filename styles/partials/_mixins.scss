@@ -7,9 +7,30 @@
     }
   }
   
-  @mixin desktop {
-    @media screen and (min-width: $desktop-breakpoint) {
-      @content;
-    }
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
   }
-  
+}
+
+
+@mixin grid-layout($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+
+@mixin text-style($size, $weight: normal, $line-height: normal) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin gray-transition ($webkit-filter, $moz-filter, $filter) {
+  -webkit-filter: grayscale($webkit-filter);
+  -moz-filter: grayscale($moz-filter);
+  filter: grayscale($filter);
+}
+
+

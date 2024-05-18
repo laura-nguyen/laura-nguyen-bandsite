@@ -8,11 +8,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Avenir Next LT Pro', sans-serif;
-    
   }
 
 img {
-    width: 100%;
+    max-width: 100%;
 }
 
 ul, li {
@@ -26,17 +25,15 @@ a {
 }
 
 // header & nav
-.wrapper--header {
-    background-color: $bandsite-black;
+.header {
+    background-color: $color-bandsite-black;
 }
 
-.header__content {
+.header-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
     align-items: center;
     width: 100%;
-
 
     @include tablet {
         flex-direction: row;
@@ -45,13 +42,19 @@ a {
 
     @include desktop {
         padding: 0 8rem;
-        max-width: 80rem;
+        max-width: $desktop-breakpoint;
         margin: 0 auto;
-    
     }
-
 }
 
+.header__logo {
+    padding-top: 1rem;
+    max-width: 7.5rem;
+
+    @include tablet {
+        padding-top: 0;
+    }
+}
 
 
 .header__nav {
@@ -64,14 +67,10 @@ a {
     justify-content: space-between;
     width: 100%;
     
-
     @include tablet {
         width: 20rem;
         padding: 0 5rem;
     }
-
-
-
 
 }
 
@@ -89,11 +88,9 @@ a {
     }
 }
 
-// need to add padding to the a tag to make it clickable 
+
 .header__link{
-    color: $white;
     font-size: .875rem;
-    font-weight: 600;
     display: block;
     padding: 0.5rem 0;
 
@@ -107,47 +104,33 @@ a {
     
 }
 
-// need to fix this 
 .header__link--inactive{
-    color: $mercury;
-    font-weight: 400;
-    display: block;
-    
-}
-
-.header__item--active {
-    border-bottom: $white solid .25rem;
-    font-weight: 400;
-    display: block;
-}
-
-.header__item--inactive {
+    color: $color-mercury;
+    font-weight: $weight-normal;
     border-bottom: transparent solid 0.25rem;
-    display: block;
 }
 
-// logo should be reusable - same throughout format 
-// for mobile. can add margin instead of padding - cam get rid of this class 
-.header__logo {
-    padding-top: 1rem;
-    width: 7.5rem;
-    @include tablet {
-        padding-top: 0;
-    }
+
+.header__link--active {
+    color: $color-white;
+    border-bottom: $color-white solid .25rem;
+    font-weight: $weight-demi;
 }
+
+
 
 // hero 
-.wrapper--hero {
+.hero {
     background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-
-
+    background-position: center;
+    width: 100%;
 }
 
-.hero {
+.hero-wrapper {
     @include desktop { 
-        max-width: 80rem;
+        max-width: $desktop-breakpoint;
         margin: 0 auto;
     }
 }
@@ -156,8 +139,8 @@ a {
     font-size: 1.5rem;
     padding: 5.1875rem 1rem;
     text-align: left;
-    color: $white;
-    font-weight: 600;
+    color: $color-white;
+    font-weight: $weight-demi;
 
     @include tablet {
         font-size: 3.75rem;
@@ -174,13 +157,13 @@ a {
 
 // footer
 
-.wrapper--footer {
-    background-color: $bandsite-black;
+.footer {
+    background-color: $color-bandsite-black;
     
 }
 
-.footer__content {
-    color: $white;
+.footer-wrapper {
+    color: $color-white;
     padding: 1rem; 
     font-size: .8125rem; 
     display: flex;
@@ -194,7 +177,7 @@ a {
 
     @include desktop {
         padding: 2.25rem 8rem;
-        max-width: 80rem;
+        max-width: $desktop-breakpoint;
         margin: 0 auto;
 
     }
@@ -213,12 +196,23 @@ a {
     }
 }
 
-.footer__title-social {
+.footer__top-wrapper {
     @include tablet {
         display: flex;
         justify-content: space-between;
         gap: 2.125rem;
         align-items: baseline;
+    }
+}
+
+.footer__header {
+    font-weight: $weight-demi;
+    padding-top: 1rem; 
+    font-size: 1.5rem;
+
+    @include tablet {
+        font-size: 2.25rem;
+        font-weight: $weight-demi; 
     }
 }
 
@@ -248,24 +242,10 @@ a {
 
 
 
-.footer__title {
-    font-weight: 600;
-    padding-top: 1rem; 
-    font-size: 1.5rem;
-
-    @include tablet {
-        font-size: 2.25rem;
-        font-weight: 600; 
-    }
-
-}
-
 .footer__contact {
     display: flex;
     flex-direction: column;
-
     justify-content: flex-start;
-
 
     @include tablet {
         flex-direction: row;
@@ -275,13 +255,12 @@ a {
 }
 
 
-// container for each agent -- should rename
-.contact__agent {
+.contact__item {
     padding: 0.5rem 0;
 }
 
 .contact__name {
-    font-weight: 600;
+    font-weight: $weight-demi;
     padding-bottom: 1rem;
 }
 
@@ -295,7 +274,7 @@ a {
 }
 
 .contact__email {
-    color: $white;
+    color: $color-white;
     padding: 0.5rem 0;
 
     @include tablet {
@@ -322,9 +301,8 @@ a {
 }
 
 
-//image size can be similar to header logo 
 .footer__logo-img { 
-    padding: 1.5rem 0 1rem 0;
+    padding: 1.5rem 0 1rem;
     max-width: 7.5rem;
     @include tablet {
         padding: 0;
@@ -343,7 +321,6 @@ a {
     }
 
     @include desktop {
-        font-size: .875rem;
         padding: 1rem 0;
     }
 }
