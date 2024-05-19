@@ -13,24 +13,34 @@
   }
 }
 
-
 @mixin grid-layout($columns, $gap) {
   display: grid;
   grid-template-columns: repeat($columns, 1fr);
   gap: $gap;
 }
 
-
-@mixin text-style($size, $weight: normal, $line-height: normal) {
+@mixin font-style($size, $weight: $weight-normal, $line-height: normal) {
   font-size: $size;
   font-weight: $weight;
   line-height: $line-height;
 }
 
-@mixin gray-transition ($webkit-filter, $moz-filter, $filter) {
-  -webkit-filter: grayscale($webkit-filter);
-  -moz-filter: grayscale($moz-filter);
-  filter: grayscale($filter);
+@mixin gray-transition ($percentage) {
+  -webkit-filter: grayscale($percentage);
+  -moz-filter: grayscale($percentage);
+  filter: grayscale($percentage);
+}
+
+@mixin flex-layout($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin spacing($margin: 0, $padding: 0) {
+  margin: $margin;
+  padding: $padding;
 }
 
 

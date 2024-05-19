@@ -4,8 +4,7 @@
 
 // reset 
 * {
-    margin: 0;
-    padding: 0;
+    @include spacing(0, 0);
     box-sizing: border-box;
     font-family: 'Avenir Next LT Pro', sans-serif;
   }
@@ -27,96 +26,81 @@ a {
 // header & nav
 .header {
     background-color: $color-bandsite-black;
-}
-
-.header-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-
-    @include tablet {
+  
+    &-wrapper {
+      @include flex-layout(flex, center, center);
+      flex-direction: column;
+      width: 100%;
+  
+      @include tablet {
         flex-direction: row;
         padding: 0 2.25rem;
-    }
-
-    @include desktop {
-        padding: 0 8rem;
-        max-width: $desktop-breakpoint;
-        margin: 0 auto;
-    }
-}
-
-.header__logo {
-    padding-top: 1rem;
-    max-width: 7.5rem;
-
-    @include tablet {
-        padding-top: 0;
-    }
-}
-
-
-.header__nav {
-    width: 100%;
-}
-
-.header__nav-list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    
-    @include tablet {
-        width: 20rem;
-        padding: 0 5rem;
-    }
-
-}
-
-.header__item {
-    width: 100%;
-    text-align: center;
-    
+      }
   
-    @include tablet {
+      @include desktop {
+        @include spacing(0 auto, 0 8rem);
+        max-width: $desktop-breakpoint;
+      }
+    }
+  
+    &__logo {
+      padding-top: 1rem;
+      max-width: 7.5rem;
+  
+      @include tablet {
+        padding-top: 0;
+      }
+    }
+  
+    &__nav {
+      width: 100%;
+  
+      &-list {
+        @include flex-layout(flex, space-between, baseline);
+        width: 100%;
+  
+        @include tablet {
+          width: 20rem;
+          padding: 0 5rem;
+        }
+      }
+    }
+  
+    &__item {
+      width: 100%;
+      text-align: center;
+  
+      @include tablet {
         width: auto;
+      }
     }
-
-    @include desktop {
-    
-    }
-}
-
-
-.header__link{
-    font-size: .875rem;
-    display: block;
-    padding: 0.5rem 0;
-
-    @include tablet {
+  
+    &__link {
+      @include font-style(.875rem, $weight-normal);
+      display: block;
+      padding: 0.5rem 0;
+      color: $color-mercury;
+  
+      @include tablet {
         padding: 1.5rem 0;
-    }
-
-    @include desktop {
+      }
+  
+      @include desktop {
         padding: 2rem 0;
+      }
+  
+      &--active {
+        color: $color-white;
+        border-bottom: $color-white solid 0.25rem;
+        font-weight: $weight-demi;
+      }
+  
+      &:hover {
+        border-bottom: $color-white solid 0.25rem;
+        color: $color-white;
+      }
     }
-    
-}
-
-.header__link--inactive{
-    color: $color-mercury;
-    font-weight: $weight-normal;
-    border-bottom: transparent solid 0.25rem;
-}
-
-
-.header__link--active {
-    color: $color-white;
-    border-bottom: $color-white solid .25rem;
-    font-weight: $weight-demi;
-}
-
+  }
 
 
 // hero 
@@ -126,201 +110,173 @@ a {
     background-repeat: no-repeat;
     background-position: center;
     width: 100%;
-}
-
-.hero-wrapper {
-    @include desktop { 
+  
+    &-wrapper {
+      @include desktop {
         max-width: $desktop-breakpoint;
         margin: 0 auto;
+      }
     }
-}
-
-.hero__title {
-    font-size: 1.5rem;
-    padding: 5.1875rem 1rem;
-    text-align: left;
-    color: $color-white;
-    font-weight: $weight-demi;
-
-    @include tablet {
-        font-size: 3.75rem;
-        padding: 12rem 2.25rem; // will adjust top/bottom
-    }
-
-    @include desktop {
-        font-size: 3.75rem;
+  
+    &__title {
+      @include font-style(1.5rem, $weight-demi);
+      padding: 5.1875rem 1rem;
+      text-align: left;
+      color: $color-white;
+  
+      @include tablet {
+        @include font-style(3.75rem, $weight-demi);
+        padding: 12rem 2.25rem;
+      }
+  
+      @include desktop {
         padding: 17rem 8rem;
-        
+      }
     }
-}
+  }
 
 
 // footer
-
 .footer {
     background-color: $color-bandsite-black;
-    
-}
-
-.footer-wrapper {
-    color: $color-white;
-    padding: 1rem; 
-    font-size: .8125rem; 
-    display: flex;
-    flex-direction: column;
-
-    @include tablet {
+  
+    &-wrapper {
+      color: $color-white;
+      padding: 1rem;
+      @include font-style(.8125rem);
+      @include flex-layout(flex, flex-start, flex-start);
+      flex-direction: column;
+  
+      @include tablet {
         padding: 2.25rem;
-        font-size: .875rem;
-
-    }
-
-    @include desktop {
-        padding: 2.25rem 8rem;
+        @include font-style(.875rem);
+      }
+  
+      @include desktop {
+        @include spacing(0 auto, 2.25rem 8rem);
         max-width: $desktop-breakpoint;
-        margin: 0 auto;
-
+      }
     }
-}
-
-
-.footer__top {
-    @include tablet {
-        display: flex;
+  
+    &__top {
+      @include tablet {
+        @include flex-layout(flex, space-between, baseline);
         flex-wrap: nowrap;
-        align-items: baseline;
-        justify-content: space-between;
         padding-bottom: 2rem;
-
-        
+      }
+  
+      &-wrapper {
+        @include tablet {
+          @include flex-layout(flex, space-between, baseline);
+          gap: 2.125rem;
+        }
+      }
     }
-}
-
-.footer__top-wrapper {
-    @include tablet {
-        display: flex;
-        justify-content: space-between;
-        gap: 2.125rem;
-        align-items: baseline;
+  
+    &__header {
+      @include font-style(1.5rem, $weight-demi);
+      padding-top: 1rem;
+  
+      @include tablet {
+        @include font-style(2.25rem, $weight-demi);
+      }
     }
-}
-
-.footer__header {
-    font-weight: $weight-demi;
-    padding-top: 1rem; 
-    font-size: 1.5rem;
-
-    @include tablet {
-        font-size: 2.25rem;
-        font-weight: $weight-demi; 
-    }
-}
-
-
-.footer__social {
-    padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    width: 7.5rem;
-
-    @include tablet {
+  
+    &__social {
+      padding: 1rem 0;
+      @include flex-layout(flex, space-between, center);
+      width: 7.5rem;
+  
+      @include tablet {
         padding-bottom: 0;
+      }
+  
+      &-icon {
+        height: 1.5rem;
+        width: auto;
+        @include transition(fill 0.3s, opacity 0.3s);
+  
+        &:hover {
+          opacity: 0.3;
+        }
+      }
     }
-
-}
-
-.footer__social-icon {
-    height: 1.5rem;
-    width: auto;
-    transition: fill 0.3s, opacity 0.3s;
-}
-
-
-.footer__social-icon:hover {
-    opacity: 0.3;
-}
-
-
-
-.footer__contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-
-    @include tablet {
+  
+    &__contact {
+      @include flex-layout(flex, flex-start, flex-start);
+      flex-direction: column;
+  
+      @include tablet {
         flex-direction: row;
         gap: 3rem;
-
+      }
+  
+      .contact__item {
+        padding: 0.5rem 0;
+      }
+  
+      .contact__name {
+        @include font-style($weight-demi);
+        padding-bottom: 1rem;
+      }
+  
+      .contact__info {
+        padding-bottom: 0.5rem;
+        line-height: 1.25rem;
+  
+        @include tablet {
+          padding: 1rem 0;
+        }
+      }
+  
+      .contact__email {
+        color: $color-white;
+        padding: 0.5rem 0;
+  
+        @include tablet {
+          padding-bottom: 1.5rem;
+        }
+      }
     }
-}
-
-
-.contact__item {
-    padding: 0.5rem 0;
-}
-
-.contact__name {
-    font-weight: $weight-demi;
-    padding-bottom: 1rem;
-}
-
-.contact__info {
-    padding-bottom: 0.5rem; 
-    line-height: 1.25rem; 
-
-    @include tablet {
-        padding: 1rem 0;
-    }
-}
-
-.contact__email {
-    color: $color-white;
-    padding: 0.5rem 0;
-
-    @include tablet {
-        padding-bottom: 1.5rem;
-    }
-}
-
-
-
-.footer__logo--mobile {
-    padding-top: 0.5rem;
-    @include tablet {
+  
+    &__logo {
+      &--mobile {
+        padding-top: 0.5rem;
+  
+        @include tablet {
+          display: none;
+        }
+      }
+  
+      &--tablet-desktop {
         display: none;
-
+  
+        @include tablet {
+          display: contents;
+        }
+      }
+  
+      &-img {
+        padding: 1.5rem 0 1rem;
+        max-width: 7.5rem;
+  
+        @include tablet {
+          padding: 0;
+        }
+      }
     }
-
-}
-.footer__logo--tablet-desktop {
-    display: none;
-
-    @include tablet {
-        display: contents;
-}
-}
-
-
-.footer__logo-img { 
-    padding: 1.5rem 0 1rem;
-    max-width: 7.5rem;
-    @include tablet {
-        padding: 0;
-    }
-}
-
-
-.footer__copyright {
-    font-size: .75rem;
-    padding-bottom: 1rem;
-
-
-    @include tablet {
+  
+    &__copyright {
+      font-size: .75rem;
+      padding-bottom: 1rem;
+  
+      @include tablet {
         font-size: .875rem;
         padding: 1.5rem 0;
-    }
-
-    @include desktop {
+      }
+  
+      @include desktop {
         padding: 1rem 0;
+      }
     }
-}
+  }
