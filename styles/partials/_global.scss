@@ -160,7 +160,8 @@ a {
   
     &__top {
       @include tablet {
-        @include flex-layout(flex, space-between, baseline);
+        width: 100%;
+        @include flex-layout(row, space-between, baseline);
         flex-wrap: nowrap;
         padding-bottom: 2rem;
       }
@@ -168,7 +169,7 @@ a {
       &-wrapper {
         @include tablet {
           @include flex-layout(flex, space-between, baseline);
-          gap: 2.125rem;
+          gap: 2.3rem;
         }
       }
     }
@@ -194,7 +195,6 @@ a {
       &-icon {
         height: 1.5rem;
         width: auto;
-        @include transition(fill 0.3s, opacity 0.3s);
   
         &:hover {
           opacity: 0.3;
@@ -208,7 +208,7 @@ a {
   
       @include tablet {
         flex-direction: row;
-        gap: 3rem;
+        gap: 3.4rem;
       }
   
       .contact__item {
@@ -216,8 +216,12 @@ a {
       }
   
       .contact__name {
-        @include font-style($weight-demi);
+        font-weight: 600;
         padding-bottom: 1rem;
+
+        @include tablet {
+            padding-bottom: 0.5rem;
+        }
       }
   
       .contact__info {
