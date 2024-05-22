@@ -105,7 +105,14 @@ a {
 
 // hero 
 .hero {
-    background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
+    &--bio {
+        background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
+    }
+
+    &--shows {
+        background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-shows.jpg");
+    }
+    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
