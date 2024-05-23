@@ -183,21 +183,30 @@
 
 .comments {
     background-color: $color-alabaster;
-  
+
     &-wrapper {
-      @include flex-layout(column, space-evenly);
-      padding: 1rem 1rem 0.5rem 1rem;
+        padding: 1rem;
+        @include tablet {
+            padding: 2rem;
+        }
     
-      @include tablet {
-        padding: 0 2.25rem 1.75rem;
-      }
-    
-      @include desktop {
-          @include spacing(0 auto, 0 8rem 2.25rem 8rem);
-          max-width: $desktop-breakpoint;
-        //   flex-direction: row; // add when using javascript
-      }
+        @include desktop {
+            @include spacing(0 auto, 2rem 8rem);
+            max-width: $desktop-breakpoint;
+        }
     }
+  
+    &__content-wrapper  {
+        padding: 0.5rem 0;
+    
+        @include tablet {
+          padding: 1.25rem 3.5rem 0;
+        }
+    
+        @include desktop {
+          padding: 1.25rem 6rem 0; // change this - smaller on mockup 
+        }
+      }
   
     &__title {
       padding: 0.5rem 0;
@@ -208,4 +217,22 @@
         font-size: 2.25rem;
       }
     }
+}
+
+
+.comments__form-divider {
+    border-top: 1px solid $color-mercury;
+}
+
+.comments__form-wrapper { // use other scss, shouldn't be here 
+    padding: 0.5rem 0;
+
+    @include tablet {
+        padding: 1.25rem 3.5rem 0;
+    }
+
+    @include desktop {
+        padding: 1.25rem 6rem 0;
+    }
+
 }

@@ -534,22 +534,31 @@ a {
   background-color: #FAFAFA;
 }
 .comments-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: stretch;
-  padding: 1rem 1rem 0.5rem 1rem;
+  padding: 1rem;
 }
 @media screen and (min-width: 768px) {
   .comments-wrapper {
-    padding: 0 2.25rem 1.75rem;
+    padding: 2rem;
   }
 }
 @media screen and (min-width: 1280px) {
   .comments-wrapper {
     margin: 0 auto;
-    padding: 0 8rem 2.25rem 8rem;
+    padding: 2rem 8rem;
     max-width: 1280px;
+  }
+}
+.comments__content-wrapper {
+  padding: 0.5rem 0;
+}
+@media screen and (min-width: 768px) {
+  .comments__content-wrapper {
+    padding: 1.25rem 3.5rem 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .comments__content-wrapper {
+    padding: 1.25rem 6rem 0;
   }
 }
 .comments__title {
@@ -560,5 +569,23 @@ a {
   .comments__title {
     padding: 3rem 0 1.5rem;
     font-size: 2.25rem;
+  }
+}
+
+.comments__form-divider {
+  border-top: 1px solid #E1E1E1;
+}
+
+.comments__form-wrapper {
+  padding: 0.5rem 0;
+}
+@media screen and (min-width: 768px) {
+  .comments__form-wrapper {
+    padding: 1.25rem 3.5rem 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .comments__form-wrapper {
+    padding: 1.25rem 6rem 0;
   }
 }/*# sourceMappingURL=bio.css.map */

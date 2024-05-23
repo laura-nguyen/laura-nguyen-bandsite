@@ -12,9 +12,11 @@
 
 .hero__title {
     padding: 1rem 0;
+    width: 80%;
+
     @include tablet {
         padding: 0.5rem 0;
-        width: 75%;
+        width: 35rem;
     }
     @include desktop {
         width: 100%;
@@ -81,26 +83,157 @@
   
     &-wrapper {
       @include flex-layout(column, space-evenly);
-      padding: 1rem 1rem 0.5rem 1rem;
+      padding: 1rem 0;
     
       @include tablet {
-        padding: 0 2.25rem 1.75rem;
+        padding: 0.5rem 1.125rem 2.25rem;
       }
     
       @include desktop {
-          @include spacing(0 auto, 0 8rem 2.25rem 8rem);
+          @include spacing(0 auto, 0 8rem);
           max-width: $desktop-breakpoint;
-        //   flex-direction: row; // add when using javascript
+            flex-direction: row; 
+            justify-content: space-between;
       }
     }
   
     &__title {
-      padding: 0.5rem 0;
+      padding: 1rem;
       font-weight: $weight-demi;
   
       @include tablet {
-        padding: 3rem 0 1.5rem;
+        padding: 3rem 1.125rem 1.5rem;
         font-size: 2.25rem;
       }
+    }
+}
+
+
+
+
+
+
+.shows__subtitle {
+    text-align: left;
+    color: $color-silver;
+    text-transform: uppercase;
+    
+    font-size: 1rem; // need to change font size to make smaller
+
+    display: none;
+
+    p { // change to class 
+        font-weight: $weight-demi;
+        width: 61%;
+    }
+
+    @include tablet {
+        padding: 1.5rem 1rem 0.5rem ;
+        display: contents;
+        display: flex;
+        justify-content: space-between;
+   
+    }
+}
+
+.shows__btn {
+    height: 2.5rem;
+    border-radius: .25rem;
+    width: 100%; 
+    border: none;
+    text-transform: uppercase;
+    background-color: $color-bandsite-black;
+    color: $color-white;
+    font-weight: $weight-demi;
+    
+    font-size: 1rem;
+    padding: 0 2rem; 
+
+    @include tablet {
+        min-width: 9.375rem; 
+    
+        
+        
+    }
+
+   
+}
+
+
+
+.shows__item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: left;
+
+    padding: 1rem;
+    border-bottom: solid .125rem $color-mercury;
+  
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        
+    }
+
+    
+}
+
+.shows__element {
+    padding-bottom: 0.5rem;
+
+    @include tablet {
+        padding: 0;
+        width: 100%;
+    }
+}
+.shows__label--mobile {
+    display: contents;
+    color: $color-silver;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .625rem;
+    @include tablet {
+        display: none;
+    }
+}
+
+.shows__detail {
+    font-size: .8125rem;
+    padding: 0.25rem 0;
+    
+    @include tablet {
+        font-size: .875rem;
+    }
+
+    &--date {
+        font-weight: 600;
+    }
+
+    @include desktop {
+        font-size: 1rem;
+    }
+}
+
+.shows__btn-wrapper {
+    padding-top: 0.5rem;
+    @include tablet {
+        padding: 0;
+        min-width: 25%;
+    }
+
+    @include desktop {
+
+        width: 150px;
+    }
+}
+
+.shows__list-wrapper {
+    @include desktop {
+        padding: 3rem 0;
+        width: 80%;
     }
 }
