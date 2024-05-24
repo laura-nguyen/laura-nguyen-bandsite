@@ -7,6 +7,7 @@
     @include spacing(0, 0);
     box-sizing: border-box;
     font-family: 'Avenir Next LT Pro', sans-serif;
+    
   }
 
 img {
@@ -127,7 +128,7 @@ a {
   
     &__title {
       @include font-style(1.5rem, $weight-demi);
-      padding: 5.1875rem 1rem;
+      padding: 5.1875rem 1rem; // left and right padding represent the side margin 
       text-align: left;
       color: $color-white;
   

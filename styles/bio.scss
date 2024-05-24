@@ -6,6 +6,7 @@
 // about
 .about {
     background-color: $color-white;
+    color: $color-bandsite-black;
 
     &-wrapper {
         padding: 1rem;
@@ -87,6 +88,7 @@
       &-author {
         font-weight: $weight-demi;
         padding-top: 0.5rem;
+        font-size: .875rem;
   
         @include tablet {
           font-size: 1rem;
@@ -128,6 +130,7 @@
 // gallery
 .gallery {
   background-color: $color-alabaster;
+  color: $color-bandsite-black;
 
   &-wrapper {
     @include flex-layout(column, space-evenly);
@@ -182,7 +185,8 @@
 // comments 
 
 .comments {
-    background-color: $color-alabaster;
+    background-color: $color-white;
+    color: $color-bandsite-black;
 
     &-wrapper {
         padding: 1rem;
@@ -197,14 +201,15 @@
     }
   
     &__content-wrapper  {
-        padding: 0.5rem 0;
+        padding: 1rem 0 0.5rem;
     
         @include tablet {
           padding: 1.25rem 3.5rem 0;
         }
     
         @include desktop {
-          padding: 1.25rem 6rem 0; // change this - smaller on mockup 
+          padding: 1.25rem 260px 0;  
+        
         }
       }
   
@@ -220,12 +225,32 @@
 }
 
 
-.comments__form-divider {
-    border-top: 1px solid $color-mercury;
+.comments__add-comment-wrapper {
+    border-bottom: 2px solid $color-mercury;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
 }
 
-.comments__form-wrapper { // use other scss, shouldn't be here 
+.comments__item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8125rem;
+    border-bottom: 2px $color-mercury solid;
+    padding: 1rem 0 0.5rem;
+    gap: 1rem;
+    flex-grow: 0;
+
+    @include tablet {
+        font-size: .875rem;
+    }
+    
+}
+
+.comments__form-wrapper { 
     padding: 0.5rem 0;
+    
 
     @include tablet {
         padding: 1.25rem 3.5rem 0;
@@ -235,4 +260,150 @@
         padding: 1.25rem 6rem 0;
     }
 
+}
+
+
+.comments__avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50% 50%;
+    background-color: $color-mercury;
+    object-fit: cover;
+    object-position: 10%;
+    margin-top: 1rem;
+    flex-shrink: 0;
+
+    @include tablet {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    &--grey {
+        margin-top: 0;
+    }
+
+}
+
+.comments__avatar--grey { // image is squished 
+    width: 2.25rem; 
+    height: 2.25rem;
+    border-radius: 50% 50%;
+    background-color: $color-mercury;
+    flex-shrink: 0;
+    
+  
+
+    @include tablet {
+        width: 3rem;
+        height: 3rem;
+    }
+
+
+}
+
+.form { // need class name 
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    
+
+}
+
+.form__label {
+    color: $color-silver;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .625rem;
+    margin: 2px 0;
+    
+
+}
+
+.form__input-name, .form__input-comment {
+    height: 2.25rem;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px $color-mercury solid;
+    background-color: $color-alabaster;
+    margin: 2px 0 0.5rem;
+    padding: .75rem;
+    color: $color-bandsite-black; 
+
+    @include tablet {
+        height: 3rem;
+        padding: 1rem;
+    }
+   
+}
+
+.form__input-comment {
+    height: 5rem;
+    resize: none;
+    @include tablet {
+        margin-bottom: 1rem;
+    }
+}
+
+.form__input-name::placeholder,
+.form__input-comment::placeholder {
+    color: $color-bandsite-black;
+    
+} // not working 
+
+.form__input-name:focus, .form__input-comment:focus {
+        border-color: $color-bandsite-black;
+        background-color: $color-white;
+        border-color: $color-bandsite-black;
+        outline: none;
+}
+
+.form__btn {
+    height: 2.5rem;
+    border-radius: .25rem;
+    width: 100%; 
+    border: none;
+    text-transform: uppercase;
+    background-color: $color-bandsite-black;
+    color: $color-white;
+    font-weight: $weight-demi;
+    margin: 0.5rem 0 1rem;
+    
+    font-size: 1rem;
+    padding: 0 2rem; 
+
+    @include tablet {
+        width: 9.375rem;
+        margin-left: auto;
+        margin-bottom: 1.5rem;
+
+    }
+}
+
+.form__btn:hover {
+    background-color: $color-bandsite-darkblack;
+}
+
+.comments__item-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comments__item-details {
+    width: 100%;
+    
+}
+
+.comments__item-name {
+    font-weight: 600;
+}
+
+.comments__item-date {
+    color: $color-silver; 
+}
+
+.comments__item-text {
+    padding: 0.5rem 0;
+    word-wrap: break-word; 
+    white-space: pre-wrap; 
+    overflow-wrap: break-word; 
 }

@@ -400,12 +400,13 @@ a {
 @media screen and (min-width: 1280px) {
   .hero__music {
     width: 80%;
-    height: 9.375rem;
+    height: 10.375rem;
   }
 }
 
 .shows {
-  background-color: #FAFAFA;
+  background-color: #FFFFFF;
+  color: #323232;
 }
 .shows-wrapper {
   display: flex;
@@ -476,6 +477,11 @@ a {
     min-width: 9.375rem;
   }
 }
+@media screen and (min-width: 768px) and (min-width: 1280px) {
+  .shows__btn {
+    width: 11.1rem;
+  }
+}
 
 .shows__item {
   display: flex;
@@ -484,6 +490,12 @@ a {
   text-align: left;
   padding: 1rem;
   border-bottom: solid 0.125rem #E1E1E1;
+}
+.shows__item:hover {
+  background-color: #FAFAFA;
+}
+.shows__item--selected {
+  background-color: #E1E1E1;
 }
 @media screen and (min-width: 768px) {
   .shows__item {
@@ -547,6 +559,7 @@ a {
 @media screen and (min-width: 1280px) {
   .shows__btn-wrapper {
     width: 150px;
+    text-align: right;
   }
 }
 

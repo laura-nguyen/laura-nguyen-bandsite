@@ -7,16 +7,14 @@
     <title>BANDSITE | Home</title>
 </head>
 <body>
-    <!-- navigation -->
+
     <header class="header">
         <div class="header-wrapper">
 
-            <!-- logo -->
             <a href="index.html">
                 <img class="header__logo" src="assets/logos/Logo-bandsite.svg" alt="Brandsite logo">
             </a>
-       
-            <!-- nav -->
+  
             <nav class="header__nav">
                 <ul class="header__nav-list">
                     <li class="header__item"><a href="#" class="header__link header__link--active">Biography</a></li>
@@ -28,14 +26,12 @@
 
     </header>
 
-    <!-- hero -->
     <section class="hero hero--bio">
         <div class="hero-wrapper">
             <h1 class="hero__title">The Bees Knees</h1>
         </div>
     </section>
 
-    <!-- about -->
     <main class="about">
         <div class="about-wrapper">
             <h2 class="about__header">About the Musicians</h2>
@@ -60,7 +56,6 @@
         </div>
     </main>
 
-    <!-- photo gallery -->
     <section class="gallery">
         <div class="gallery-wrapper">
             <h2 class="gallery__title">Photo Gallery</h2>
@@ -78,31 +73,34 @@
         </div>
     </section>
 
-    <!-- comments -->
     <section class="comments">
  
         <div class="comments-wrapper">
             <h2 class="comments__title">Join the Conversation</h2>
             <div class="comments__content-wrapper">
-                <div class="comments__add-comment-wrapper"> // use flex 
-                    <div class="comments__img-wrapper">
-                        <img class="comments__img" src="" alt="">
+                <div class="comments__add-comment-wrapper"> 
+                   
+                        <img class="comments__avatar" src="assets/images/Mohan-muruge.jpg" alt="side headshot of a man named Mohan Muruge in front of a purple backdrop">
 
-                    </div>
-                    <form action="submit">
+
+                    <form class="form" action="submit" id="form" method="post">
+                        <label class="form__label" for="name">Name</label>
+                        <input class="form__input-name" type="text" name="name" id="name" placeholder="Enter your name">
+                        <label class="form__label" for="comment">Comment</label>
+                        <textarea class="form__input-comment" type="text" name="comment" id="comment" placeholder="Add a new comment"></textarea>
+                        <button class="form__btn" type="submit">Comment</button>
 
 
                     </form>
-
                 </div>
-                <div class="comments__feed-wrapper">
-                    <div class="comments__feed-card"></div>
-                    <div class="comments__feed-card"></div>
-                    <div class="comments__feed-card"></div>
 
-                </div>
-                
+                    <div id="comments__list">
+                        <!-- Use Javascript to populate  -->
+        
 
+
+                        
+                    </div>
 
             
             </div>
@@ -110,14 +108,12 @@
 
     </section>
 
-    <!-- footer -->
     <footer class="footer">
         <div class="footer-wrapper">
             <div class="footer__top">
                 <div class="footer__top-wrapper">
                     <h2 class="footer__header">Get in Touch</h2>
 
-                    <!-- social icons -->
                     <div class="footer__social">
                         <a href="https://www.instagram.com/" target="_blank">
                             <img class="footer__social-icon" src="assets/icons/SVG/Icon-instagram.svg" alt="instagram logo">
@@ -135,7 +131,6 @@
                 </div>
             </div>
 
-            <!-- contact -->
             <div class="footer__contact">
                 <div class="contact__item">
                     <h4 class="contact__name">The Bees Knees Management</h4>
@@ -165,4 +160,4 @@
     </footer>
     <script src="scripts/index-page.js"></script>
 </body>
-</html>
+</html>      

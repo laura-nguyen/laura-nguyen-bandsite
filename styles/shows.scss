@@ -59,7 +59,7 @@
     }
 }
 
-.hero__music {
+.hero__music { // need to change this 
     width: 100%; // change to set width 
     height: 9.375rem;
     padding: 1rem 0;
@@ -70,7 +70,7 @@
     }
     @include desktop {
         width: 80%;
-        height: 9.375rem; // need to adjust placement 
+        height: 10.375rem; // need to adjust placement 
 
     }
 }
@@ -79,7 +79,8 @@
 
 // shows 
 .shows {
-    background-color: $color-alabaster;
+    background-color: $color-white;
+    color: $color-bandsite-black;
   
     &-wrapper {
       @include flex-layout(column, space-evenly);
@@ -151,7 +152,10 @@
 
     @include tablet {
         min-width: 9.375rem; 
-    
+    @include desktop {
+       
+            width: 11.1rem; 
+    }
         
         
     }
@@ -169,7 +173,14 @@
 
     padding: 1rem;
     border-bottom: solid .125rem $color-mercury;
-  
+
+    &:hover {
+        background-color: $color-alabaster;
+      }
+    &--selected {
+    background-color: $color-mercury;
+    }
+
 
     @include tablet {
         flex-direction: row;
@@ -228,6 +239,7 @@
     @include desktop {
 
         width: 150px;
+        text-align: right;
     }
 }
 
