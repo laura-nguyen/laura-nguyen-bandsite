@@ -3,249 +3,225 @@
 @use 'partials/variables' as *;
 @use 'partials/typography' as *;
 
-// hero
-.hero__title-wrapper {
-    display: flex;
-    flex-direction: column;
-    color: $color-white;
-}
+.hero {
+  &--shows {
+    background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-shows.jpg");
+  }
 
-.hero__title {
-    padding: 1rem 0;
-    width: 80%;
+  &-wrapper {
+    &--shows {
+      padding: 2rem 1rem;
+      @include flex-layout(column, space-between);
 
-    @include tablet {
-        padding: 0.5rem 0;
-        width: 35rem;
-    }
-    @include desktop {
-        width: 100%;
-    }
-
-}
-
-
-.hero__subtitle {
-    color: $color-white;
-    font-weight: $weight-normal;
-    font-size: .875rem;
-    padding: 0.5rem 0;
-
-    @include tablet {
-        font-weight: $weight-demi;
-        font-size: 1.5rem;
-        padding: 1rem 0;
-    }
-}
-
-.hero-wrapper--shows { // control height of hero image 
-    padding: 2rem 1rem;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    @include tablet {
-    
+      @include tablet {
         padding: 2.25rem;
-        
-
-    }
-    @include desktop {
+      }
+      @include desktop {
         padding: 16rem 8rem;
         flex-direction: row;
         gap: 8rem;
-        align-items: center;
-        
+        align-items: flex-end;
+      }
     }
+  }
+
+  &__title {
+    &--shows {
+      padding: 1rem 0;
+      width: 80%;
+
+      @include tablet {
+        padding: 0.5rem 0;
+        width: 35rem;
+      }
+      @include desktop {
+        width: 100%;
+      }
+    }
+  }
+
+  &__subtitle {
+    color: $color-white;
+    font-weight: $weight-normal;
+    font-size: 0.875rem;
+    padding: 0.5rem 0;
+
+    @include tablet {
+      font-weight: $weight-demi;
+      font-size: 1.5rem;
+      padding: 1rem 0;
+    }
+  }
+
+  &__music {
+    width: 100%;
+    height: 8.125rem;
+    padding: 0.5rem 0;
+
+    @include tablet {
+      padding: 2.25rem 0;
+      width: 26rem;
+      height: 12.5rem;
+    }
+    @include desktop {
+      width: 85%;
+      height: 12.5rem;
+    }
+  }
 }
 
-.hero__music { // need to change this 
-    width: 100%; // change to set width 
-    height: 9.375rem;
+.shows {
+  background-color: $color-white;
+  color: $color-bandsite-black;
+
+  &-wrapper {
+    @include flex-layout(column, space-evenly);
     padding: 1rem 0;
 
     @include tablet {
-        width: 25.625rem; // change width to set width 
-        height: 9.375rem;
+      padding: 0.5rem 1.125rem 2.25rem;
     }
+
     @include desktop {
-        width: 80%;
-        height: 10.375rem; // need to adjust placement 
-
+      @include spacing(0 auto, 0 8rem);
+      max-width: $desktop-breakpoint;
+      flex-direction: row;
+      justify-content: space-between;
     }
-}
+  }
 
-
-
-// shows 
-.shows {
-    background-color: $color-white;
+  &__title {
+    padding: 1rem;
+    font-weight: $weight-demi;
     color: $color-bandsite-black;
-  
-    &-wrapper {
-      @include flex-layout(column, space-evenly);
-      padding: 1rem 0;
-    
-      @include tablet {
-        padding: 0.5rem 1.125rem 2.25rem;
-      }
-    
-      @include desktop {
-          @include spacing(0 auto, 0 8rem);
-          max-width: $desktop-breakpoint;
-            flex-direction: row; 
-            justify-content: space-between;
-      }
+
+    @include tablet {
+      padding: 3rem 1.125rem 1.5rem;
+      font-size: 2.25rem;
     }
-  
-    &__title {
-      padding: 1rem;
-      font-weight: $weight-demi;
-  
-      @include tablet {
-        padding: 3rem 1.125rem 1.5rem;
-        font-size: 2.25rem;
-      }
+  }
+
+  &__list-wrapper {
+    @include desktop {
+      padding: 3rem 0;
+      width: 80%;
     }
-}
+  }
 
+  &__subtitle-wrapper {
+    display: none;
+    font-weight: $weight-demi;
 
+    @include tablet {
+      padding: 1.5rem 1rem 0.5rem;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 
-
-
-
-.shows__subtitle {
+  &__subtitle {
     text-align: left;
     color: $color-silver;
     text-transform: uppercase;
-    
-    font-size: 1rem; // need to change font size to make smaller
+    font-size: 0.75rem;
+    font-weight: $weight-demi;
+    flex: 1;
+  }
 
-    display: none;
-
-    p { // change to class 
-        font-weight: $weight-demi;
-        width: 61%;
-    }
-
-    @include tablet {
-        padding: 1.5rem 1rem 0.5rem ;
-        display: contents;
-        display: flex;
-        justify-content: space-between;
-   
-    }
-}
-
-.shows__btn {
+  &__btn {
     height: 2.5rem;
-    border-radius: .25rem;
-    width: 100%; 
+    border-radius: 0.25rem;
+    width: 100%;
     border: none;
     text-transform: uppercase;
     background-color: $color-bandsite-black;
     color: $color-white;
     font-weight: $weight-demi;
-    
     font-size: 1rem;
-    padding: 0 2rem; 
+    padding: 0 2rem;
 
     @include tablet {
-        min-width: 9.375rem; 
+      min-width: auto;
+    }
+
     @include desktop {
-       
-            width: 11.1rem; 
+      width: auto;
     }
-        
-        
-    }
+  }
 
-   
-}
-
-
-
-.shows__item {
+  &__item {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     text-align: left;
-
     padding: 1rem;
-    border-bottom: solid .125rem $color-mercury;
+    border-bottom: $bandsite-border;
 
     &:hover {
-        background-color: $color-alabaster;
-      }
-    &--selected {
-    background-color: $color-mercury;
+      background-color: $color-alabaster;
     }
 
+    &--selected {
+      background-color: $color-mercury;
+    }
 
     @include tablet {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
     }
+  }
 
-    
-}
-
-.shows__element {
+  &__item-detail {
     padding-bottom: 0.5rem;
 
     @include tablet {
-        padding: 0;
-        width: 100%;
+      padding: 0;
+      width: 100%;
     }
-}
-.shows__label--mobile {
+  }
+
+  &__label--mobile {
     display: contents;
     color: $color-silver;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: .625rem;
-    @include tablet {
-        display: none;
-    }
-}
+    font-size: 0.625rem;
 
-.shows__detail {
-    font-size: .8125rem;
-    padding: 0.25rem 0;
-    
     @include tablet {
-        font-size: .875rem;
+      display: none;
+    }
+  }
+
+  &__item-text {
+    font-size: 0.8125rem;
+    padding: 0.25rem 0;
+
+    @include tablet {
+      font-size: 0.875rem;
     }
 
     &--date {
-        font-weight: 600;
+      font-weight: 600;
     }
 
     @include desktop {
-        font-size: 1rem;
+      font-size: 1rem;
     }
-}
+  }
 
-.shows__btn-wrapper {
+  &__btn-wrapper {
     padding-top: 0.5rem;
+
     @include tablet {
-        padding: 0;
-        min-width: 25%;
+      padding: 0;
+      min-width: 25%;
     }
 
     @include desktop {
-
-        width: 150px;
-        text-align: right;
+      width: 9.375rem;
+      text-align: right;
     }
-}
-
-.shows__list-wrapper {
-    @include desktop {
-        padding: 3rem 0;
-        width: 80%;
-    }
+  }
 }

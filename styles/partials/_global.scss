@@ -2,7 +2,6 @@
 @use 'variables' as *; 
 @use 'mixins' as *;
 
-// reset 
 * {
     @include spacing(0, 0);
     box-sizing: border-box;
@@ -24,7 +23,6 @@ a {
     display: block;
 }
 
-// header & nav
 .header {
     background-color: $color-bandsite-black;
   
@@ -104,47 +102,42 @@ a {
   }
 
 
-// hero 
 .hero {
-    &--bio {
-        background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
-    }
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
 
-    &--shows {
-        background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-shows.jpg");
-    }
-    
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-  
-    &-wrapper {
-      @include desktop {
-        max-width: $desktop-breakpoint;
-        margin: 0 auto;
-      }
-    }
-  
-    &__title {
-      @include font-style(1.5rem, $weight-demi);
-      padding: 5.1875rem 1rem; // left and right padding represent the side margin 
-      text-align: left;
-      color: $color-white;
-  
-      @include tablet {
-        @include font-style(3.75rem, $weight-demi);
-        padding: 12rem 2.25rem;
-      }
-  
-      @include desktop {
-        padding: 17rem 8rem;
-      }
+  &-wrapper {
+    @include desktop {
+      max-width: $desktop-breakpoint;
+      margin: 0 auto;
     }
   }
 
+  &__title {
+    @include font-style(1.5rem, $weight-demi);
+    padding: 5.1875rem 1rem; 
+    text-align: left;
+    color: $color-white;
 
-// footer
+    @include tablet {
+      @include font-style(3.75rem, $weight-demi);
+      padding: 12rem 2.25rem;
+    }
+
+    @include desktop {
+      padding: 17rem 8rem;
+    }
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      color: $color-white;
+    }
+  } 
+}
+
 .footer {
     background-color: $color-bandsite-black;
   

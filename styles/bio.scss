@@ -3,13 +3,20 @@
 @use 'partials/variables' as *;
 @use 'partials/typography' as *;
 
-// about
+.hero {
+  &--bio {
+    background-image: linear-gradient(rgba(50, 50, 50, 0.5), rgba(50, 50, 50, 0.5)), url("../assets/images/hero-bio.jpg");
+}
+}
+
 .about {
     background-color: $color-white;
     color: $color-bandsite-black;
 
     &-wrapper {
         padding: 1rem;
+        color: $color-bandsite-black;
+
         @include tablet {
             padding: 2rem;
         }
@@ -127,7 +134,6 @@
   }
 
 
-// gallery
 .gallery {
   background-color: $color-alabaster;
   color: $color-bandsite-black;
@@ -137,7 +143,7 @@
     padding: 1rem 1rem 0.5rem 1rem;
   
     @include tablet {
-      padding: 0 2.25rem 1.75rem;
+      padding: 0 2.25rem 2.25rem;
     }
   
     @include desktop {
@@ -182,8 +188,6 @@
 
 
 
-// comments 
-
 .comments {
     background-color: $color-white;
     color: $color-bandsite-black;
@@ -208,17 +212,17 @@
         }
     
         @include desktop {
-          padding: 1.25rem 260px 0;  
+          padding: 1.25rem 16.25rem 0;  
         
         }
       }
   
     &__title {
-      padding: 0.5rem 0;
+      padding: 0.5rem 0 0;
       font-weight: $weight-demi;
   
       @include tablet {
-        padding: 3rem 0 1.5rem;
+        padding: 1rem 0 1.5rem;
         font-size: 2.25rem;
       }
     }
@@ -226,7 +230,7 @@
 
 
 .comments__add-comment-wrapper {
-    border-bottom: 2px solid $color-mercury;
+    border-bottom: $bandsite-border;
     display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -237,7 +241,7 @@
     display: flex;
     justify-content: space-between;
     font-size: 0.8125rem;
-    border-bottom: 2px $color-mercury solid;
+    border-bottom: $bandsite-border;
     padding: 1rem 0 0.5rem;
     gap: 1rem;
     flex-grow: 0;
@@ -263,147 +267,193 @@
 }
 
 
-.comments__avatar {
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50% 50%;
-    background-color: $color-mercury;
-    object-fit: cover;
-    object-position: 10%;
-    margin-top: 1rem;
-    flex-shrink: 0;
+.comments {
+  background-color: $color-white;
+  color: $color-bandsite-black;
+
+  &-wrapper {
+    padding: 1rem;
+    @include tablet {
+      padding: 2rem;
+    }
+
+    @include desktop {
+      @include spacing(0 auto, 2rem 8rem);
+      max-width: $desktop-breakpoint;
+    }
+  }
+
+  &__content-wrapper {
+    padding: 1rem 0 0.5rem;
 
     @include tablet {
-        width: 3rem;
-        height: 3rem;
+      padding: 1.25rem 3.5rem 0;
+    }
+
+    @include desktop {
+      padding: 1.25rem 16.25rem 0;
+    }
+  }
+
+  &__title {
+    padding: 0.5rem 0 0;
+    font-weight: $weight-demi;
+
+    @include tablet {
+      padding: 1rem 0 1.5rem;
+      font-size: 2.25rem;
+    }
+  }
+
+  &__add-comment-wrapper {
+    border-bottom: $bandsite-border;
+    @include flex-layout(row, space-between);
+    gap: 1rem;
+  }
+
+  &__item {
+    @include flex-layout(row, space-between);
+    font-size: 0.8125rem;
+    border-bottom: $bandsite-border;
+    padding: 1rem 0 0.5rem;
+    gap: 1rem;
+    flex-grow: 0;
+
+    @include tablet {
+      font-size: 0.875rem;
+    }
+
+    &-info {
+      @include flex-layout(row, space-between);
+    }
+
+    &-details {
+      width: 100%;
+    }
+
+    &-name {
+      font-weight: 600;
+    }
+
+    &-date {
+      color: $color-silver;
+    }
+
+    &-text {
+      padding: 0.5rem 0;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+    }
+  }
+
+  &__form-wrapper {
+    padding: 0.5rem 0;
+
+    @include tablet {
+      padding: 1.25rem 3.5rem 0;
+    }
+
+    @include desktop {
+      padding: 1.25rem 6rem 0;
+    }
+  }
+
+  &__avatar {
+    &--img {
+      @include avatar-style(2.25rem, 2.25rem, 1rem);
+      object-fit: cover;
+      object-position: 10%;
     }
 
     &--grey {
-        margin-top: 0;
+      @include avatar-style(2.25rem, 2.25rem, 0);
+      background-color: $color-mercury;
     }
-
+  }
 }
 
-.comments__avatar--grey { // image is squished 
-    width: 2.25rem; 
-    height: 2.25rem;
-    border-radius: 50% 50%;
-    background-color: $color-mercury;
-    flex-shrink: 0;
-    
-  
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 
-    @include tablet {
-        width: 3rem;
-        height: 3rem;
-    }
-
-
-}
-
-.form { // need class name 
-    display: flex;
-    flex-direction: column;
-    width: 100%; 
-    
-
-}
-
-.form__label {
+  &__label {
     color: $color-silver;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: .625rem;
-    margin: 2px 0;
-    
+    font-size: 0.625rem;
+    margin: 0.125rem 0;
 
-}
+    @include tablet {
+      font-size: 0.75rem;
+    }
+  }
 
-.form__input-name, .form__input-comment {
+  &__input-name,
+  &__input-comment {
     height: 2.25rem;
     width: 100%;
-    border-radius: 4px;
-    border: 1px $color-mercury solid;
+    border-radius: 0.25rem;
+    border: $bandsite-border;
     background-color: $color-alabaster;
-    margin: 2px 0 0.5rem;
-    padding: .75rem;
-    color: $color-bandsite-black; 
+    margin: 0.125rem 0 1rem;
+    padding: 0.75rem;
+    color: $color-bandsite-black;
 
     @include tablet {
-        height: 3rem;
-        padding: 1rem;
+      height: 3rem;
+      padding: 1rem;
     }
-   
-}
+  }
 
-.form__input-comment {
+  &__input-comment {
     height: 5rem;
     resize: none;
+
     @include tablet {
-        margin-bottom: 1rem;
+      margin-bottom: 1rem;
     }
-}
+  }
 
-.form__input-name::placeholder,
-.form__input-comment::placeholder {
+  &__input-name::placeholder,
+  &__input-comment::placeholder {
     color: $color-bandsite-black;
-    
-} // not working 
+    font-size: 0.8125rem;
 
-.form__input-name:focus, .form__input-comment:focus {
-        border-color: $color-bandsite-black;
-        background-color: $color-white;
-        border-color: $color-bandsite-black;
-        outline: none;
-}
+    @include tablet {
+      font-size: 0.875rem;
+    }
+  }
 
-.form__btn {
+  &__input-name:focus,
+  &__input-comment:focus {
+    border-color: $color-bandsite-black;
+    background-color: $color-white;
+    outline: none;
+  }
+
+  &__btn {
     height: 2.5rem;
-    border-radius: .25rem;
-    width: 100%; 
+    border-radius: 0.25rem;
+    width: 100%;
     border: none;
     text-transform: uppercase;
     background-color: $color-bandsite-black;
     color: $color-white;
     font-weight: $weight-demi;
     margin: 0.5rem 0 1rem;
-    
     font-size: 1rem;
-    padding: 0 2rem; 
+    padding: 0 2rem;
 
     @include tablet {
-        width: 9.375rem;
-        margin-left: auto;
-        margin-bottom: 1.5rem;
-
+      width: 9.375rem;
+      margin-left: auto;
+      margin-bottom: 1.5rem;
     }
-}
 
-.form__btn:hover {
-    background-color: $color-bandsite-darkblack;
-}
-
-.comments__item-info {
-    display: flex;
-    justify-content: space-between;
-}
-
-.comments__item-details {
-    width: 100%;
-    
-}
-
-.comments__item-name {
-    font-weight: 600;
-}
-
-.comments__item-date {
-    color: $color-silver; 
-}
-
-.comments__item-text {
-    padding: 0.5rem 0;
-    word-wrap: break-word; 
-    white-space: pre-wrap; 
-    overflow-wrap: break-word; 
+    &:hover {
+      background-color: $color-bandsite-darkblack;
+    }
+  }
 }

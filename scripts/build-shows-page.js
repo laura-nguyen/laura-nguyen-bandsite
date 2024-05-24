@@ -42,12 +42,14 @@ showsList.forEach(show => {
 
 
     const dateElement = document.createElement('div');
-    dateElement.classList.add('shows__element');
+    dateElement.classList.add('shows__item-detail');
+
     const dateLabel = document.createElement('h4');
     dateLabel.classList.add('shows__label--mobile');
     dateLabel.textContent = 'Date';
+
     const dateDetail = document.createElement('p');
-    dateDetail.classList.add('shows__detail', 'shows__detail--date');
+    dateDetail.classList.add('shows__item-text', 'shows__item-text--date');
     dateDetail.textContent = show.date;
 
     dateElement.appendChild(dateLabel);
@@ -55,12 +57,14 @@ showsList.forEach(show => {
 
 
     const venueElement = document.createElement('div');
-    venueElement.classList.add('shows__element');
+    venueElement.classList.add('shows__item-detail');
+
     const venueLabel = document.createElement('h4');
     venueLabel.classList.add('shows__label--mobile');
     venueLabel.textContent = 'Venue';
+
     const venueDetail = document.createElement('p');
-    venueDetail.classList.add('shows__detail');
+    venueDetail.classList.add('shows__item-text');
     venueDetail.textContent = show.venue;
 
     venueElement.appendChild(venueLabel);
@@ -68,12 +72,14 @@ showsList.forEach(show => {
 
 
     const locationElement = document.createElement('div');
-    locationElement.classList.add('shows__element');
+    locationElement.classList.add('shows__item-detail');
+
     const locationLabel = document.createElement('h4');
     locationLabel.classList.add('shows__label--mobile');
     locationLabel.textContent = 'Location';
+
     const locationDetail = document.createElement('p');
-    locationDetail.classList.add('shows__detail');
+    locationDetail.classList.add('shows__item-text');
     locationDetail.textContent = show.location;
 
     locationElement.appendChild(locationLabel);
@@ -82,6 +88,7 @@ showsList.forEach(show => {
 
     const buttonWrapper = document.createElement('div');
     buttonWrapper.classList.add('shows__btn-wrapper');
+
     const buyButton = document.createElement('button');
     buyButton.classList.add('shows__btn');
     buyButton.textContent = 'Buy Tickets';

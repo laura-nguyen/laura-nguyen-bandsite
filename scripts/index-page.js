@@ -58,14 +58,8 @@ function displayComment(comment) {
     commentsList.appendChild(commentItem);
 }
 
-function clearAllComments() {
-    while (commentsList.firstChild) {
-        commentsList.removeChild(commentsList.firstChild);
-    }
-}
-
 function refreshComments() {
-    clearAllComments();
+    commentsList.innerHTML = '';
     comments.forEach(comment => displayComment(comment));
 }
 
@@ -78,9 +72,11 @@ commentForm.addEventListener('submit', (event) => {
         date: new Date().toLocaleDateString(), 
         text: commentInput.value
     };
+
     comments.unshift(newComment);
 
     refreshComments();
-    
+
     event.target.reset();
+
 });

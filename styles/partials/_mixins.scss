@@ -43,4 +43,16 @@
   padding: $padding;
 }
 
+@mixin avatar-style($width, $height, $margin-top) {
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: $margin-top;
+  
 
+  @include tablet {
+    width: 3rem;
+    height: 3rem;
+  }
+}

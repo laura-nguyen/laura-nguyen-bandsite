@@ -1,19 +1,16 @@
-// breakpoint
 $tablet-breakpoint: 768px;
 $desktop-breakpoint: 1280px;
 
-// primary colors
 $color-bandsite-black: #323232; 
 $color-silver: #AFAFAF; 
 $color-white: #FFFFFF; 
 
-// secondary colors
 $color-bandsite-darkblack: #000000; 
 $color-mercury: #E1E1E1; 
 $color-alabaster: #FAFAFA; 
 
-// font weight 
 $weight-normal: 400;
 $weight-demi: 600;
 $weight-bold: 700;
 
+$bandsite-border: solid .0625rem $color-mercury;
