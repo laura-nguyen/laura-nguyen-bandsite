@@ -283,6 +283,16 @@
     }
   }
 
+  &__title {
+    padding: 0.5rem 0 0;
+    font-weight: $weight-demi;
+
+    @include tablet {
+      padding: 1rem 0 1.5rem;
+      font-size: 2.25rem;
+    }
+  }
+
   &__content-wrapper {
     padding: 1rem 0 0.5rem;
 
@@ -292,16 +302,6 @@
 
     @include desktop {
       padding: 1.25rem 16.25rem 0;
-    }
-  }
-
-  &__title {
-    padding: 0.5rem 0 0;
-    font-weight: $weight-demi;
-
-    @include tablet {
-      padding: 1rem 0 1.5rem;
-      font-size: 2.25rem;
     }
   }
 
@@ -347,18 +347,6 @@
     }
   }
 
-  &__form-wrapper {
-    padding: 0.5rem 0;
-
-    @include tablet {
-      padding: 1.25rem 3.5rem 0;
-    }
-
-    @include desktop {
-      padding: 1.25rem 6rem 0;
-    }
-  }
-
   &__avatar {
     &--img {
       @include avatar-style(2.25rem, 2.25rem, 1rem);
@@ -390,47 +378,51 @@
     }
   }
 
-  &__input-name,
-  &__input-comment {
-    height: 2.25rem;
-    width: 100%;
-    border-radius: 0.25rem;
-    border: $bandsite-border;
-    background-color: $color-alabaster;
-    margin: 0.125rem 0 1rem;
-    padding: 0.75rem;
-    color: $color-bandsite-black;
+  &__input {
+    &-name,
+    &-comment {
+      height: 2.25rem;
+      width: 100%;
+      border-radius: 0.25rem;
+      border: $bandsite-border;
+      background-color: $color-alabaster;
+      margin: 0.125rem 0 1rem;
+      padding: 0.75rem;
+      color: $color-bandsite-black;
 
-    @include tablet {
-      height: 3rem;
-      padding: 1rem;
+      @include tablet {
+        height: 3rem;
+        padding: 1rem;
+      }
+
+      &::placeholder {
+        color: $color-bandsite-black;
+        font-size: 0.8125rem;
+
+        @include tablet {
+          font-size: 0.875rem;
+        }
+      }
+
+      &:focus {
+        border-color: $color-bandsite-black;
+        background-color: $color-white;
+        outline: none;
+      }
     }
-  }
 
-  &__input-comment {
-    height: 5rem;
-    resize: none;
+    &-comment {
+      height: 5rem;
+      resize: none;
 
-    @include tablet {
-      margin-bottom: 1rem;
+      @include tablet {
+        margin-bottom: 1rem;
+      }
     }
-  }
 
-  &__input-name::placeholder,
-  &__input-comment::placeholder {
-    color: $color-bandsite-black;
-    font-size: 0.8125rem;
-
-    @include tablet {
-      font-size: 0.875rem;
+    &--error {
+      border: .0625rem solid #D22D2D !important;
     }
-  }
-
-  &__input-name:focus,
-  &__input-comment:focus {
-    border-color: $color-bandsite-black;
-    background-color: $color-white;
-    outline: none;
   }
 
   &__btn {

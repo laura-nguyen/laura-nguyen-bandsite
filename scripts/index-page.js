@@ -21,7 +21,6 @@ const commentForm = document.getElementById('form');
 const nameInput = document.getElementById('name');
 const commentInput = document.getElementById('comment');
 
-
 function displayComment(comment) {
     const commentItem = document.createElement('div');
     commentItem.classList.add('comments__item');
@@ -66,12 +65,36 @@ function refreshComments() {
 refreshComments();
 
 commentForm.addEventListener('submit', (event) => {
+    
     event.preventDefault();
+
+    const nameValue = nameInput.value.trim();
+    const commentValue = commentInput.value.trim();
+
+    if (nameValue === "" || commentValue === "") {
+      if (nameValue === "") {
+        nameInput.classList.add('form__input--error');
+      } else {
+        nameInput.classList.remove('form__input--error');
+      }
+      if (commentValue === "") {
+        commentInput.classList.add('form__input--error');
+      } else {
+        commentInput.classList.remove('form__input--error');
+      }
+      return;
+    }
+
+    console.log('Form submitted:', nameValue, commentValue);
+
     const newComment = {
         name: nameInput.value,
         date: new Date().toLocaleDateString(), 
         text: commentInput.value
     };
+
+    nameInput.classList.remove('form__input--error');
+    commentInput.classList.remove('form__input--error');
 
     comments.unshift(newComment);
 
