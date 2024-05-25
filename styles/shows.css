@@ -348,7 +348,7 @@ a {
   .hero-wrapper--shows {
     padding: 16rem 8rem;
     flex-direction: row;
-    gap: 8rem;
+    gap: 7.875rem;
     align-items: flex-end;
   }
 }
@@ -388,14 +388,13 @@ a {
 @media screen and (min-width: 768px) {
   .hero__music {
     padding: 2.25rem 0;
-    width: 26rem;
-    height: 12.5rem;
+    width: 25.25rem;
+    height: 11.6875rem;
   }
 }
 @media screen and (min-width: 1280px) {
   .hero__music {
     width: 85%;
-    height: 12.5rem;
   }
 }
 
