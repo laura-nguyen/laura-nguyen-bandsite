@@ -40,7 +40,6 @@ showsList.forEach(show => {
     const showItem = document.createElement('div');
     showItem.classList.add('shows__item');
 
-
     const dateElement = document.createElement('div');
     dateElement.classList.add('shows__item-detail');
 
@@ -54,7 +53,6 @@ showsList.forEach(show => {
 
     dateElement.appendChild(dateLabel);
     dateElement.appendChild(dateDetail);
-
 
     const venueElement = document.createElement('div');
     venueElement.classList.add('shows__item-detail');
@@ -70,7 +68,6 @@ showsList.forEach(show => {
     venueElement.appendChild(venueLabel);
     venueElement.appendChild(venueDetail);
 
-
     const locationElement = document.createElement('div');
     locationElement.classList.add('shows__item-detail');
 
@@ -84,7 +81,6 @@ showsList.forEach(show => {
 
     locationElement.appendChild(locationLabel);
     locationElement.appendChild(locationDetail);
-
 
     const buttonWrapper = document.createElement('div');
     buttonWrapper.classList.add('shows__btn-wrapper');
@@ -109,7 +105,6 @@ showsList.forEach(show => {
         showItem.classList.add('shows__item--selected');
         selectedShowItem = showItem;
     });
-
     
 })
 
