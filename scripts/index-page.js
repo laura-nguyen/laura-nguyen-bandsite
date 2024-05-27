@@ -33,12 +33,14 @@ function timeSince(date) {
         return `${Math.floor(secondsPast / 3600)} hours ago`;
     } else if (secondsPast <= 2592000) { 
         return `${Math.floor(secondsPast / 86400)} days ago`;
-    } else if (secondsPast <= 31536000) { 
+    } else if (secondsPast < 31536000) { 
         return `${Math.floor(secondsPast / 2592000)} months ago`;
-    } else {
+    } else if (secondsPast < 63072000) { 
+        return `1 year ago`;
+    } else { 
         return `${Math.floor(secondsPast / 31536000)} years ago`;
     }
-}
+  }
 
 function displayComment(comment) {
     const commentItem = document.createElement('div');
