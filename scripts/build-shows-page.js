@@ -1,3 +1,5 @@
+import BandSiteApi from "./band-site-api.js";
+
 const showsList = [
     {
         date: "Mon Sept 09 2024",
@@ -34,6 +36,8 @@ const showsList = [
 
 const showsListContainer = document.getElementById('shows__list');
 let selectedShowItem = null;
+
+// instead of a hardcoded showeach, retrieve list 
 
 showsList.forEach(show => {
  

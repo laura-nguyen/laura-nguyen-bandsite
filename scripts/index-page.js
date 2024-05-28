@@ -1,3 +1,5 @@
+import BandSiteApi from "./band-site-api.js";
+
 const comments = [
     {
         name: "Victor Pinto",
@@ -78,6 +80,7 @@ function displayComment(comment) {
     commentsList.appendChild(commentItem);
 }
 
+// replace this function with getComments from API 
 function refreshComments() {
     commentsList.innerHTML = '';
     comments.forEach(comment => displayComment(comment));
@@ -106,6 +109,8 @@ commentForm.addEventListener('submit', (event) => {
       return;
     }
 
+    // fire postComment function 
+
     const newComment = {
         name: nameInput.value,
         date: new Date(), 
@@ -122,3 +127,8 @@ commentForm.addEventListener('submit', (event) => {
     event.target.reset();
 
 });
+
+const API_KEY = "e72a5484-dff3-4315-ac2b-23edc696c942";
+const api = new BandSiteApi(API_KEY);
+api.getComments();
+api.getShows();
