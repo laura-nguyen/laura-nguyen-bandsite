@@ -1,4 +1,4 @@
-import BandSiteApi from "./band-site-api.js";
+// import BandSiteApi from "./band-site-api";
 
 const comments = [
     {
@@ -63,6 +63,7 @@ function displayComment(comment) {
 
     const date = document.createElement('p');
     date.classList.add('comments__item-date');
+    // Timestamp is in ms since epoch - have to convert 
     date.textContent = timeSince(comment.date);
 
     const text = document.createElement('p');
@@ -128,7 +129,6 @@ commentForm.addEventListener('submit', (event) => {
 
 });
 
-const API_KEY = "e72a5484-dff3-4315-ac2b-23edc696c942";
-const api = new BandSiteApi(API_KEY);
-api.getComments();
-api.getShows();
+// let BandSite = new BandSiteApi("e72a5484-dff3-4315-ac2b-23edc696c942");
+// BandSite.getComments();
+// BandSite.getShows();

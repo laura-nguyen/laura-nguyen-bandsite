@@ -1,4 +1,3 @@
-const API_KEY = "e72a5484-dff3-4315-ac2b-23edc696c942";
 
 class BandSiteApi {
     constructor(apiKey) {
@@ -10,15 +9,14 @@ class BandSiteApi {
 
     async postComment(newComment) {
         try {
-            result = axios.post(`${this.baseURL}/comments?api_key=<${this.apiKey}>`);
-            
-            console.log(result)
-            return result.data
+            const response = await axios.post(`${this.baseURL}comments?api_key=${this.apiKey}`, newComment, {
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              });
+            return response.data;
 
-            
-
-
-        } catch {
+        } catch(error) {
             console.error('Unable to post comment:', error);
             
         }
@@ -29,10 +27,9 @@ class BandSiteApi {
 
     async getComments() {
         try {
-            const comments = await axios.get(`${this.baseURL}/comments?api_key=<${this.apiKey}>`);
-            console.log(comments.data);
-
-            return comments.data
+            const response = await axios.get(`${this.baseURL}comments?api_key=${this.apiKey}`);
+            const comments = response.data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            return comments;
 
 
         } catch (error) {
@@ -44,17 +41,14 @@ class BandSiteApi {
 
     };
 
-    // must return the array of show data objects trturned from the API 
+    // must return the array of show data objects from the API 
 
     async getShows() {
         try {
-            const shows = await axios.get(`${this.baseURL}/comments?api_key=<${this.apiKey}>`);
-            
-            console.log(shows.data);
+            const shows = await axios.get(`${this.baseURL}showdates?api_key=${this.apiKey}`);
             return shows.data
-
-
-        } catch {
+            
+        } catch(error) {
             console.error('Unable to retrieve show information:', error);
             
         }
@@ -63,5 +57,5 @@ class BandSiteApi {
 }
 
 
-
+const API_KEY = "e72a5484-dff3-4315-ac2b-23edc696c942";
 export default BandSiteApi;

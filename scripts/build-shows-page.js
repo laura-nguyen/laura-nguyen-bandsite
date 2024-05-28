@@ -1,45 +1,45 @@
 import BandSiteApi from "./band-site-api.js";
 
-const showsList = [
-    {
-        date: "Mon Sept 09 2024",
-        venue: "Ronald Lane",
-        location: "San Francisco, CA",
-    },
-    {
-        date: "Tue Sept 17 2024",
-        venue: "Pier 3 East",
-        location: "San Francisco, CA",
-    },
-    {
-        date: "Sat Oct 12 2024",
-        venue: "View Lounge",
-        location: "San Francisco, CA",
-    },
-    {
-        date: "Sat Nov 16 2024",
-        venue: "Hyatt Agency",
-        location: "San Francisco, CA",
-    },
-    {
-        date: "Fri Nov 29 2024",
-        venue: "Moscow Center",
-        location: "San Francisco, CA",
-    },
-    {
-        date: "Wed Dec 18 2024",
-        venue: "Press Club",
-        location: "San Francisco, CA",
-    }
+// const showsList = [
+//     {
+//         date: "Mon Sept 09 2024",
+//         place: "Ronald Lane",
+//         location: "San Francisco, CA",
+//     },
+//     {
+//         date: "Tue Sept 17 2024",
+//         place: "Pier 3 East",
+//         location: "San Francisco, CA",
+//     },
+//     {
+//         date: "Sat Oct 12 2024",
+//         place: "View Lounge",
+//         location: "San Francisco, CA",
+//     },
+//     {
+//         date: "Sat Nov 16 2024",
+//         place: "Hyatt Agency",
+//         location: "San Francisco, CA",
+//     },
+//     {
+//         date: "Fri Nov 29 2024",
+//         place: "Moscow Center",
+//         location: "San Francisco, CA",
+//     },
+//     {
+//         date: "Wed Dec 18 2024",
+//         place: "Press Club",
+//         location: "San Francisco, CA",
+//     }
 
-];
+// ];
 
 const showsListContainer = document.getElementById('shows__list');
 let selectedShowItem = null;
 
 // instead of a hardcoded showeach, retrieve list 
 
-showsList.forEach(show => {
+function createShow(show) {
  
     const showItem = document.createElement('div');
     showItem.classList.add('shows__item');
@@ -53,24 +53,25 @@ showsList.forEach(show => {
 
     const dateDetail = document.createElement('p');
     dateDetail.classList.add('shows__item-text', 'shows__item-text--date');
-    dateDetail.textContent = show.date;
+    // does it need to be a string or a date 
+    dateDetail.textContent = new Date(show.date).toDateString();
 
     dateElement.appendChild(dateLabel);
     dateElement.appendChild(dateDetail);
 
-    const venueElement = document.createElement('div');
-    venueElement.classList.add('shows__item-detail');
+    const placeElement = document.createElement('div');
+    placeElement.classList.add('shows__item-detail');
 
-    const venueLabel = document.createElement('h4');
-    venueLabel.classList.add('shows__label--mobile');
-    venueLabel.textContent = 'Venue';
+    const placeLabel = document.createElement('h4');
+    placeLabel.classList.add('shows__label--mobile');
+    placeLabel.textContent = 'Venue';
 
-    const venueDetail = document.createElement('p');
-    venueDetail.classList.add('shows__item-text');
-    venueDetail.textContent = show.venue;
+    const placeDetail = document.createElement('p');
+    placeDetail.classList.add('shows__item-text');
+    placeDetail.textContent = show.place;
 
-    venueElement.appendChild(venueLabel);
-    venueElement.appendChild(venueDetail);
+    placeElement.appendChild(placeLabel);
+    placeElement.appendChild(placeDetail);
 
     const locationElement = document.createElement('div');
     locationElement.classList.add('shows__item-detail');
@@ -96,7 +97,7 @@ showsList.forEach(show => {
     buttonWrapper.appendChild(buyButton);
 
     showItem.appendChild(dateElement);
-    showItem.appendChild(venueElement);
+    showItem.appendChild(placeElement);
     showItem.appendChild(locationElement);
     showItem.appendChild(buttonWrapper);
 
@@ -110,7 +111,26 @@ showsList.forEach(show => {
         selectedShowItem = showItem;
     });
     
-})
+}
+
+let showDates = new BandSiteApi("e72a5484-dff3-4315-ac2b-23edc696c942");
+
+//returns a promise after awaiting the get request
+console.log(showDates.getShows());
 
 
+async function displayShows() {
+    try {
+        // this displays the shows in an array 
+      const shows = await showDates.getShows();
+      
+      console.log(shows);
+      shows.forEach((show) => {
+        createShow(show)});
 
+    } catch (error) {
+      console.error('Error retrieving shows:', error);
+    }
+  }
+  
+  displayShows();
