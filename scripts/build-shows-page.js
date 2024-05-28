@@ -1,43 +1,7 @@
 import BandSiteApi from "./band-site-api.js";
 
-// const showsList = [
-//     {
-//         date: "Mon Sept 09 2024",
-//         place: "Ronald Lane",
-//         location: "San Francisco, CA",
-//     },
-//     {
-//         date: "Tue Sept 17 2024",
-//         place: "Pier 3 East",
-//         location: "San Francisco, CA",
-//     },
-//     {
-//         date: "Sat Oct 12 2024",
-//         place: "View Lounge",
-//         location: "San Francisco, CA",
-//     },
-//     {
-//         date: "Sat Nov 16 2024",
-//         place: "Hyatt Agency",
-//         location: "San Francisco, CA",
-//     },
-//     {
-//         date: "Fri Nov 29 2024",
-//         place: "Moscow Center",
-//         location: "San Francisco, CA",
-//     },
-//     {
-//         date: "Wed Dec 18 2024",
-//         place: "Press Club",
-//         location: "San Francisco, CA",
-//     }
-
-// ];
-
 const showsListContainer = document.getElementById('shows__list');
 let selectedShowItem = null;
-
-// instead of a hardcoded showeach, retrieve list 
 
 function createShow(show) {
  
@@ -113,7 +77,8 @@ function createShow(show) {
     
 }
 
-let showDates = new BandSiteApi("e72a5484-dff3-4315-ac2b-23edc696c942");
+const apiKey = "e72a5484-dff3-4315-ac2b-23edc696c942";
+let showDates = new BandSiteApi(apiKey);
 
 //returns a promise after awaiting the get request
 console.log(showDates.getShows());

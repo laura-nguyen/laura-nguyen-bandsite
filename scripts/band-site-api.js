@@ -1,4 +1,3 @@
-
 class BandSiteApi {
     constructor(apiKey) {
         this.apiKey = apiKey;
@@ -50,12 +49,8 @@ class BandSiteApi {
             
         } catch(error) {
             console.error('Unable to retrieve show information:', error);
-            
         }
-
     };
 }
 
-
-const API_KEY = "e72a5484-dff3-4315-ac2b-23edc696c942";
 export default BandSiteApi;

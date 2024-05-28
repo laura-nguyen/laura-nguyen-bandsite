@@ -1,22 +1,22 @@
-// import BandSiteApi from "./band-site-api";
+import BandSiteApi from "./band-site-api.js";
 
-const comments = [
-    {
-        name: "Victor Pinto",
-        date: new Date("11/02/2023"),
-        text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
-    },
-    {
-        name: "Christina Cabrera",
-        date: new Date("10/28/2023"),
-        text: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
-    },
-    {
-        name: "Isaac Tadesse",
-        date: new Date("10/20/2023"),
-        text: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
-    }
-];
+// const comments = [
+//     {
+//         name: "Victor Pinto",
+//         date: new Date("11/02/2023"),
+//         text: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains."
+//     },
+//     {
+//         name: "Christina Cabrera",
+//         date: new Date("10/28/2023"),
+//         text: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day."
+//     },
+//     {
+//         name: "Isaac Tadesse",
+//         date: new Date("10/20/2023"),
+//         text: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough."
+//     }
+// ];
 
 const commentsList = document.getElementById('comments__list');
 const commentForm = document.getElementById('form');
@@ -64,11 +64,13 @@ function displayComment(comment) {
     const date = document.createElement('p');
     date.classList.add('comments__item-date');
     // Timestamp is in ms since epoch - have to convert 
-    date.textContent = timeSince(comment.date);
+    // need to make sure the time date works 
+    // date.textContent = new Date(comment.timestamp).toDateString();
+    date.textContent = timeSince(new Date(comment.timestamp));
 
     const text = document.createElement('p');
     text.classList.add('comments__item-text');
-    text.textContent = comment.text;
+    text.textContent = comment.comment;
 
     info.appendChild(name);
     info.appendChild(date);
@@ -81,13 +83,6 @@ function displayComment(comment) {
     commentsList.appendChild(commentItem);
 }
 
-// replace this function with getComments from API 
-function refreshComments() {
-    commentsList.innerHTML = '';
-    comments.forEach(comment => displayComment(comment));
-}
-
-refreshComments();
 
 commentForm.addEventListener('submit', (event) => {
     
@@ -110,12 +105,11 @@ commentForm.addEventListener('submit', (event) => {
       return;
     }
 
-    // fire postComment function 
 
     const newComment = {
         name: nameInput.value,
-        date: new Date(), 
-        text: commentInput.value
+        timestamp: new Date(), 
+        comment: commentInput.value
     };
 
     nameInput.classList.remove('form__input--error');
@@ -123,12 +117,26 @@ commentForm.addEventListener('submit', (event) => {
 
     comments.unshift(newComment);
 
-    refreshComments();
+    renderComments();
 
     event.target.reset();
 
 });
 
-// let BandSite = new BandSiteApi("e72a5484-dff3-4315-ac2b-23edc696c942");
-// BandSite.getComments();
-// BandSite.getShows();
+let allComments = new BandSiteApi("e72a5484-dff3-4315-ac2b-23edc696c942");
+
+async function renderComments() {
+    try {
+        // this displays the shows in an array 
+      const comments = await allComments.getComments();
+      
+      console.log(comments);
+      comments.forEach((comment) => {
+        displayComment(comment)});
+
+    } catch (error) {
+      console.error('Error rendering comments:', error);
+    }
+  }
+  
+renderComments();
