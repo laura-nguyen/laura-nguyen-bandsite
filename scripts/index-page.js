@@ -27,7 +27,7 @@ function timeSince(date) {
     const now = new Date();
     const secondsPast = (now.getTime() - date.getTime()) / 1000;
 
-    if (secondsPast < 60) {
+    if (secondsPast < 61) {
         return `${Math.floor(secondsPast)} seconds ago`;
     } else if (secondsPast < 3600) {
         return `${Math.floor(secondsPast / 60)} minutes ago`;
@@ -83,8 +83,23 @@ function displayComment(comment) {
     commentsList.appendChild(commentItem);
 }
 
+const allComments = new BandSiteApi("e72a5484-dff3-4315-ac2b-23edc696c942");
 
-commentForm.addEventListener('submit', (event) => {
+async function submitComment(newComment) {
+    try {
+        await allComments.postComment(newComment);
+    
+        renderComments();
+    
+        
+    
+      } catch (error) {
+        console.error('Error posting comment:', error);
+      }
+}
+
+
+commentForm.addEventListener('submit', async (event) => {
     
     event.preventDefault();
 
@@ -108,29 +123,29 @@ commentForm.addEventListener('submit', (event) => {
 
     const newComment = {
         name: nameInput.value,
-        timestamp: new Date(), 
+        // timestamp: new Date(), 
         comment: commentInput.value
     };
 
     nameInput.classList.remove('form__input--error');
     commentInput.classList.remove('form__input--error');
 
-    comments.unshift(newComment);
-
-    renderComments();
+    // called post comment function. need to figure this out 
+    // unshift not working 
+    // page looks like it's refreshing. need to fix 
+    submitComment(newComment);
 
     event.target.reset();
 
 });
 
-let allComments = new BandSiteApi("e72a5484-dff3-4315-ac2b-23edc696c942");
-
 async function renderComments() {
     try {
+    
         // this displays the shows in an array 
+      commentsList.innerHTML = '';
       const comments = await allComments.getComments();
-      
-      console.log(comments);
+    
       comments.forEach((comment) => {
         displayComment(comment)});
 
