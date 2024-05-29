@@ -4,7 +4,6 @@ const showsListContainer = document.getElementById('shows__list');
 let selectedShowItem = null;
 
 function createShow(show) {
- 
     const showItem = document.createElement('div');
     showItem.classList.add('shows__item');
 
@@ -17,7 +16,7 @@ function createShow(show) {
 
     const dateDetail = document.createElement('p');
     dateDetail.classList.add('shows__item-text', 'shows__item-text--date');
-    // does it need to be a string or a date 
+
     dateDetail.textContent = new Date(show.date).toDateString();
 
     dateElement.appendChild(dateLabel);
@@ -80,16 +79,10 @@ function createShow(show) {
 const apiKey = "e72a5484-dff3-4315-ac2b-23edc696c942";
 let showDates = new BandSiteApi(apiKey);
 
-//returns a promise after awaiting the get request
-console.log(showDates.getShows());
-
-
 async function displayShows() {
     try {
-        // this displays the shows in an array 
       const shows = await showDates.getShows();
       
-      console.log(shows);
       shows.forEach((show) => {
         createShow(show)});
 

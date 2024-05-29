@@ -4,8 +4,6 @@ class BandSiteApi {
         this.baseURL = "https://unit-2-project-api-25c1595833b2.herokuapp.com/";
     }
 
-    // send a post request to the server and append to existing sata 
-
     async postComment(newComment) {
         try {
             const response = await axios.post(`${this.baseURL}comments?api_key=${this.apiKey}`, newComment, {
@@ -17,12 +15,9 @@ class BandSiteApi {
 
         } catch(error) {
             console.error('Unable to post comment:', error);
-            
         }
 
     };
-
-    //get comments from json, must sort the array from newest to oldest 
 
     async getComments() {
         try {
@@ -30,17 +25,10 @@ class BandSiteApi {
             const comments = response.data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
             return comments;
 
-
         } catch (error) {
             console.error('Failed to retreive comments:', error);
-            
         }
-
-
-
     };
-
-    // must return the array of show data objects from the API 
 
     async getShows() {
         try {
