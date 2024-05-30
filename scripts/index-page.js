@@ -1,4 +1,4 @@
-import BandSiteApi from "./band-site-api.js";
+import BandSiteApi from './band-site-api.js';
 
 const commentsList = document.getElementById('comments__list');
 const commentForm = document.getElementById('form');
@@ -24,7 +24,7 @@ function timeSince(date) {
     } else { 
         return `${Math.floor(secondsPast / 31536000)} years ago`;
     }
-  }
+}
 
 function displayComment(comment) {
     const commentItem = document.createElement('div');
@@ -51,11 +51,55 @@ function displayComment(comment) {
     text.classList.add('comments__item-text');
     text.textContent = comment.comment;
 
+    const activityButtons = document.createElement('div');
+    activityButtons.classList.add('comments__btn-activity');
+
+    const likeWrapper = document.createElement('div');
+    likeWrapper.classList.add('comments__btn-activity-wrapper--like');
+
+    const likeButton = document.createElement('button');
+    likeButton.classList.add('comments__btn-activity--like');
+
+    const likeCounter = document.createElement('p');
+    likeCounter.textContent = `${comment.likes || 0}`;
+
+    likeButton.addEventListener('click', async () => {
+        try {
+          await allComments.likeComment(comment.id);
+          renderComments();
+        }
+        catch {
+          console.error('Error liking comment:', error);
+        }
+    });
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('comments__btn-activity--delete');
+
+    deleteButton.addEventListener('click', async () => {
+        try {
+          await allComments.deleteComment(comment.id);
+          renderComments();
+        }
+        
+        catch {
+          console.error('Error deleting comment:', error);
+        }
+        
+    });
+
+    likeWrapper.append(likeButton);
+    likeWrapper.append(likeCounter);
+
+    activityButtons.append(likeWrapper);
+    activityButtons.append(deleteButton);
+
     info.appendChild(name);
     info.appendChild(date);
 
     details.appendChild(info);
     details.appendChild(text);
+    details.appendChild(activityButtons);
 
     commentItem.appendChild(avatar);
     commentItem.appendChild(details);
@@ -67,60 +111,55 @@ const allComments = new BandSiteApi("e72a5484-dff3-4315-ac2b-23edc696c942");
 async function submitComment(newComment) {
     try {
         await allComments.postComment(newComment);
-        await renderComments();
-    
-      } catch (error) {
+        renderComments();
+    } catch (error) {
         console.error('Error posting comment:', error);
-      }
+    }
 }
 
-
-commentForm.addEventListener('submit', (event) => {
-    
+commentForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const nameValue = nameInput.value.trim();
     const commentValue = commentInput.value.trim();
 
     if (nameValue === "" || commentValue === "") {
-      if (nameValue === "") {
-        nameInput.classList.add('form__input--error');
-      } else {
-        nameInput.classList.remove('form__input--error');
-      }
-      if (commentValue === "") {
-        commentInput.classList.add('form__input--error');
-      } else {
-        commentInput.classList.remove('form__input--error');
-      }
-      return;
+        if (nameValue === "") {
+            nameInput.classList.add('form__input--error');
+        } else {
+            nameInput.classList.remove('form__input--error');
+        }
+        if (commentValue === "") {
+            commentInput.classList.add('form__input--error');
+        } else {
+            commentInput.classList.remove('form__input--error');
+        }
+        return;
     }
 
     const newComment = {
-        name: nameInput.value,
-        comment: commentInput.value
+        name: nameValue,
+        comment: commentValue
     };
 
     nameInput.classList.remove('form__input--error');
     commentInput.classList.remove('form__input--error');
 
-    submitComment(newComment);
-
+    await submitComment(newComment);
     event.target.reset();
-
 });
 
 async function renderComments() {
-
     try {
-      const comments = await allComments.getComments();
-      commentsList.innerHTML = '';
-      comments.forEach((comment) => {
-        displayComment(comment)});
-
-    } catch (error) {
-      console.error('Error rendering comments:', error);
-    }
-  }
   
-renderComments();
+        const comments = await allComments.getComments();
+        commentsList.innerHTML = ''; 
+        comments.forEach((comment) => {
+            displayComment(comment);
+        });
+    } catch (error) {
+        console.error('Error rendering comments:', error);
+    }
+}
+
+renderComments(); 

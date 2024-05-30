@@ -252,6 +252,7 @@
     
 }
 
+
 .comments__form-wrapper { 
     padding: 0.5rem 0;
     
@@ -358,6 +359,37 @@
       background-color: $color-mercury;
     }
   }
+
+  &__btn-activity {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    &-wrapper--like {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      font-size: .75rem;
+    }
+
+    &--like,
+    &--delete {
+      width: 1rem; 
+      height: 1rem;
+      background-size: contain;
+      border: none;
+      background-color: transparent;
+
+    }
+
+    &--like {
+      background-image: url("./../assets/icons/SVG/icon-like.svg");
+    }
+
+    &--delete {
+      background-image: url("./../assets/icons/SVG/icon-delete.svg");
+    }
+  }
 }
 
 .form {
@@ -448,3 +480,5 @@
     }
   }
 }
+
+

@@ -734,6 +734,30 @@ a {
     height: 3rem;
   }
 }
+.comments__btn-activity {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.comments__btn-activity-wrapper--like {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.75rem;
+}
+.comments__btn-activity--like, .comments__btn-activity--delete {
+  width: 1rem;
+  height: 1rem;
+  background-size: contain;
+  border: none;
+  background-color: transparent;
+}
+.comments__btn-activity--like {
+  background-image: url("./../assets/icons/SVG/icon-like.svg");
+}
+.comments__btn-activity--delete {
+  background-image: url("./../assets/icons/SVG/icon-delete.svg");
+}
 
 .form {
   display: flex;
