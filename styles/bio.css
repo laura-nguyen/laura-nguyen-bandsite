@@ -750,6 +750,7 @@ a {
   height: 1rem;
   background-size: contain;
   border: none;
+  background-repeat: no-repeat;
   background-color: transparent;
 }
 .comments__btn-activity--like {
