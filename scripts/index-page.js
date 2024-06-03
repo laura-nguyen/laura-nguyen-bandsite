@@ -106,7 +106,8 @@ function displayComment(comment) {
     commentsList.appendChild(commentItem);
 }
 
-const allComments = new BandSiteApi("e72a5484-dff3-4315-ac2b-23edc696c942");
+const apiKey = "e72a5484-dff3-4315-ac2b-23edc696c942";
+const allComments = new BandSiteApi(apiKey);
 
 async function submitComment(newComment) {
     try {
